@@ -8,5 +8,15 @@ namespace TimetablePlanner
 {
     internal class Room
     {
+        public List<Student> List;
+        private String abbreviation;
+
+public void AddStudent()
+        {
+
+        }
+        public void Schoolclass() 
+        {
+        }
     }
 }
