@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace TimetablePlanner
 {
-    internal class Room
+    internal class Schoolclass
     {
+        string _abbrovation;
+
     }
 }

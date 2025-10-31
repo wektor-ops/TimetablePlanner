@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TimetablePlanner
 {
-    internal class Room
+    internal class Timetable
     {
     }
 }
