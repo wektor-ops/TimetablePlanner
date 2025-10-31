@@ -4,11 +4,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TimetablePlanner
+namespace TimetablePlanner  
 {
     internal class Schoolclass
     {
-        string _abbrovation;
+
+        private string _abbreviation;
+        public List<Schoolclass> SchoolClass = new List<Schoolclass()>
+        public string Abbreviation 
+        {
+            get { return _abbreviation}
+            set { }
+        }
 
     }
 }
+ 
