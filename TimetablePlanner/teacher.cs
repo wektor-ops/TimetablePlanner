@@ -8,5 +8,6 @@ namespace TimetablePlanner
 {
     internal class Teacher
     {
+
     }
 }
