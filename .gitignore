@@ -1,1 +1,7 @@
-"TimetablePlanner/.vs/" 
+TimetablePlanner/.vs/
+.vs/
+bin/
+obj/
+*.user
+*.suo
+*.db
