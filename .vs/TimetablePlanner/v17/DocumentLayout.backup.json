@@ -40,7 +40,7 @@
               "RelativeDocumentMoniker": "TimetablePlanner\\Schoolclass.cs",
               "ToolTip": "C:\\Code\\TimetablePlanner\\TimetablePlanner\\Schoolclass.cs",
               "RelativeToolTip": "TimetablePlanner\\Schoolclass.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAcAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAeAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-31T08:17:28.763Z",
               "EditorCaption": ""
@@ -55,8 +55,7 @@
               "RelativeToolTip": "TimetablePlanner\\room.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-31T08:16:55.5Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-31T08:16:55.5Z"
             },
             {
               "$type": "Document",
@@ -68,8 +67,7 @@
               "RelativeToolTip": "TimetablePlanner\\subject.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-31T07:59:07.458Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-31T07:59:07.458Z"
             },
             {
               "$type": "Document",
