@@ -8,15 +8,18 @@ namespace TimetablePlanner
 {
     internal class Room
     {
-        public List<Student> List;
-        private String abbreviation;
-
-public void AddStudent()
+       
+        private String _abbreviation;
+        public string Abbreviation;
         {
-
+            get { return _abbreviation}
+            set;
         }
-        public void Schoolclass() 
+
+        public Room(string abbreviation) 
         {
+            Abbreviation = abbreviation;
+         
         }
     }
 }

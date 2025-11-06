@@ -10,12 +10,16 @@ namespace TimetablePlanner
     internal class Subject
     {
         private string _abbreviation;
-        private List<Subject> SubjectList = new List<Subject>();
+     
         public string Abbreviation
         {
-            get { return _abbreviation }; set;
+            get { return _abbreviation }; 
+            set;
         }
-        
 
+        public Subject(String Abbreviation) 
+        {
+            Abbreviation.this = Abbreviation; 
+        }
     }
 }
