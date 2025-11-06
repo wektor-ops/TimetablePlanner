@@ -1,0 +1,7 @@
+TimetablePlanner/.vs/
+.vs/
+bin/
+obj/
+*.user
+*.suo
+*.db
