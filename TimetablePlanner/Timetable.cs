@@ -8,10 +8,7 @@ namespace TimetablePlanner
 {
     internal class Timetable
     {
-        public Teacher assigntTeacher { get; set; }
-        public Subject assigntSubject { get; set; }
-        public Room assigntRoom { get; set; }
-        public Schoolclass assigntSchoolclass { get; set; }
+
 
 
 

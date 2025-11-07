@@ -43,6 +43,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Datamanager.cs" />
+    <Compile Include="Evaluator.cs" />
+    <Compile Include="Freely.cs" />
+    <Compile Include="Optimizer.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Room.cs" />
@@ -51,6 +55,7 @@
     <Compile Include="Subject.cs" />
     <Compile Include="Teacher.cs" />
     <Compile Include="Timetable.cs" />
+    <Compile Include="TimetableSlot.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
