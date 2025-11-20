@@ -9,18 +9,24 @@ namespace TimetablePlanner
 {
 	internal class TimetableSlot
 	{
-        public Teacher assigntTeacher { get; set; }
-        public Subject assigntSubject { get; set; }
-        public Room assigntRoom { get; set; }
-        public Schoolclass assigntSchoolclass { get; set; }
+        public Teacher assignedTeacher { get; set; }
+        public Subject assignedSubject { get; set; }
+        public Room assignedRoom { get; set; }
+        public Schoolclass assignedSchoolclass { get; set; }
 
-        public TimetableSlot(Teacher assigntTeacher, Subject assigntSubject, Room assigntRoom, Schoolclass assigntSchoolclass)
+        public int day { get; set; }
+        public int hour { get; set; }
+
+
+
+        public TimetableSlot(Teacher assignedTeacher, Subject assignedSubject, Room assignedRoom, Schoolclass assignedSchoolclass, int day, int hour)
         {
-            this.assigntTeacher = assigntTeacher;
-            this.assigntSubject = assigntSubject;
-            this.assigntRoom = assigntRoom;
-            this.assigntSchoolclass = assigntSchoolclass;
+            this.assignedTeacher = assignedTeacher;
+            this.assignedSubject = assignedSubject;
+            this.assignedRoom = assignedRoom;
+            this.assignedSchoolclass = assignedSchoolclass;
+            this.day = day;
+            this.hour = hour;
         }
-
     }
 }

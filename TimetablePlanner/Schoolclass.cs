@@ -9,22 +9,102 @@ namespace TimetablePlanner
 {
     internal class Schoolclass
     {
+        public static List<Schoolclass> AllClasses = new List<Schoolclass>();
 
-        private string _abbreviation;
-        public List<Schoolclass> SchoolClass = new List<Schoolclass()>
-        public List<Subject> curriculum = new List<Subject()>
-        public string Abbreviation 
+        public string Abbreviation = "";
+        public List<Student> Students = new List<Student>();
+        public List<Subject> Curriculum = new List<Subject>();
+
+        public int MaxCapacity = 20;
+        public bool IsFull { get { if (Students.Count >= MaxCapacity) return true; return false; } }
+
+        public static void AssignStudent(Student s)
         {
-            get { return _abbreviation}
-            set { }
-        }
-        public void  AddSubjectToLehrplan(Subject subject, int NumLessions) 
-        {
-            for (int i = 0; i < NumLessions; i++)
+            foreach (var c in AllClasses)
             {
-                curriculum.Add(subject);
+                if (!c.IsFull)
+                {
+                    c.AddStudent(s);
+                    return;
+                }
+            }
+
+            if (AllClasses.Count > 0)
+            {
+                Schoolclass oldClass = AllClasses.Last();
+                SplitClass(oldClass, s);
+            }
+            else
+            {
+                string firstAbbr = GenerateNewAbbreviation();
+                var newClass = new Schoolclass { Abbreviation = firstAbbr };
+                newClass.AddStudent(s);
+                AllClasses.Add(newClass);
             }
         }
+
+        private static void SplitClass(Schoolclass oldClass, Student newStudent)
+        {
+
+            string newAbbr = GenerateNewAbbreviation();
+            Schoolclass newClass = new Schoolclass { Abbreviation = newAbbr };
+
+            List<Student> oldStudents = oldClass.Students.ToList();
+            List<Student> remain = oldStudents.Take(11).ToList();
+            List<Student> move = oldStudents.Skip(11).ToList();
+
+            oldClass.Students = remain;
+            foreach (var m in move)
+            {
+                newClass.AddStudent(m);
+            }
+
+            newClass.AddStudent(newStudent);
+            AllClasses.Add(newClass);
+
+        }
+
+        public void AddToCurriculum(Subject subject, int perweek)
+        {
+            for (int i = 0; i < perweek; i++)
+            {
+                Curriculum.Add(subject);
+            }
+        }
+        private static string GenerateNewAbbreviation()
+        {
+            int currentYear = DateTime.Now.Year % 100; // z. B. 25 für 2025
+
+            if (AllClasses.Count == 0)
+                return $"A{currentYear:D2}A";
+
+            string last = AllClasses.Last().Abbreviation;
+
+            char prefix = last[0];
+            char suffix = last[3];
+
+            // Wenn letzte Klasse z. B. "A25Z" ist → nächster Block "B25A"
+            if (suffix == 'Z')
+            {
+                prefix = (char)(prefix + 1);
+                suffix = 'A';
+            }
+            else
+            {
+                suffix = (char)(suffix + 1);
+            }
+
+            string next = $"{prefix}{currentYear:D2}{suffix}";
+            return next;
+        }
+        public bool AddStudent(Student s)
+        {
+            if (IsFull) return false;
+            Students.Add(s);
+            s.Class = this;
+            return true;
+        }
     }
+
 }
  

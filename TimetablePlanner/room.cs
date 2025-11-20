@@ -8,18 +8,26 @@ namespace TimetablePlanner
 {
     internal class Room
     {
-       
-        private String _abbreviation;
-        public string Abbreviation;
+        public static List<Room> AllRooms = new List<Room>();
+
+        private string _abbreviation;
+        public string Abbreviation
         {
-            get { return _abbreviation}
-            set;
+            get { return _abbreviation; }
+            set { _abbreviation = value; }
         }
 
-        public Room(string abbreviation) 
+        public Room(string abbreviation)
         {
+            abbreviation = (abbreviation ?? "").Trim();
+
+            if (abbreviation.Length > 4)
+                abbreviation = abbreviation.Substring(0, 4);
+            else if (abbreviation.Length < 4)
+                abbreviation = abbreviation.PadLeft(4, ' ');
+
             Abbreviation = abbreviation;
-         
+            AllRooms.Add(this);
         }
     }
 }

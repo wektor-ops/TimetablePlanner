@@ -6,11 +6,6 @@ using System.Threading.Tasks;
 
 namespace TimetablePlanner
 {
-    internal class Timetable
-    {
+    
 
-
-
-
-    }
 }

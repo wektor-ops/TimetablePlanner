@@ -13,13 +13,13 @@ namespace TimetablePlanner
      
         public string Abbreviation
         {
-            get { return _abbreviation }; 
-            set;
+            get { return _abbreviation; }
+            set { _abbreviation = value; }
         }
 
-        public Subject(String Abbreviation) 
+        public Subject(string abbreviation) 
         {
-            Abbreviation.this = Abbreviation; 
+            Abbreviation = abbreviation; 
         }
     }
 }
