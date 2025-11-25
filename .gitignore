@@ -1,0 +1,44 @@
+## Build-Artefakte
+# Binär-Ausgaben
+[Dd]ebug/
+[Rr]elease/
+[Bb]in/
+[Oo]bj/
+# Test-Ergebnisse
+*.trx
+*.dll.config
+# Symbol-Dateien
+*.pdb
+
+## Visual Studio
+# .vs/ Ordner (enthält Benutzer-Spezifisches, wie z.B. das Debugging-Layout)
+.vs/
+
+# Benutzer-Optionen und Solution-Dateien
+*.suo
+*.user
+*.userprefs
+*.sln.docstates
+*.vshost.*
+
+# NuGet Packages
+# Die Ordner für NuGet Packages
+packages/
+# NuGet "Lock" Dateien (werden von Git wiederhergestellt)
+*.nuget.g.props
+*.nuget.g.targets
+
+# Wiederherstellungs- und Caching-Ordner
+.restore/
+
+# Lokale Datenbanken
+*.mdf
+*.ldf
+*.db
+
+# Andere temporäre und generierte Dateien
+# Resharper/dotCover/andere Tools
+_ReSharper*/
+*.[Rr]e[Ss]harper
+# Lokale Einstellungen für Tools (z.B. StyleCop)
+StyleCop.Cache
