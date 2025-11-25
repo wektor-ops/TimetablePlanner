@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Runtime.CompilerServices;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
@@ -19,19 +20,32 @@ namespace TimetablePlanner
             switch (Auswahl)
             {
                 case 1:
-                    
-                        MStudent()
+
+                    MStudent();
                 break;
                 case 2:
-                    MTeacher()
+                    MTeacher();
 
 
                  break;
                 case 3:
-                    MSchoolclass()
+                    MSchoolclass();
                 break;
-                    
-
+                case 4:
+                    MSubject();
+                        break;
+                case 5:
+                    Mroom();
+                        break;
+                case 6:
+                    MPlan();
+                        break;
+                case 7:
+                    MData();
+                        break;
+                case 8:
+                    MTimetable();
+                        break;
             }
 
 
@@ -63,6 +77,7 @@ namespace TimetablePlanner
             Console.WriteLine("Please Enter lastname of student");
             string studentlastname = Console.ReadLine();
             new Student(studentfirstname, studentlastname);
+            Student.Allstudents.Add(Student)
 
         }
         
@@ -286,17 +301,161 @@ namespace TimetablePlanner
 
         case 2:
             foreach (Schoolclass sc in Schoolclass.AllClasses)
-                Console.WriteLine(sc. + " ");
+                Console.WriteLine(sc.Curriculum + " "); 
+            //wiktor frage
             break;
         case 0:
-
+            
             break;
     }
 }
+public void MSubject() 
+{
+    Console.WriteLine("[1] Show all subjects, [2] Create new subject, [0] Back");
+     string AuswahlSubject = Console.ReadLine();
+    switch (AuswahlSubject)
+    {
+        case 1:
+            //Von Liste Anzeigen
+            break;
+        
+        case 2:
+            Console.WriteLine("Name of Subject?");
+            string subjectname = Console.ReadLine();
+            Console.WriteLine("Abbrevation of subject?")
+            string subjectabrrvation = Console.ReadLine();
+            // Hier noch zur Liste hinzufügen
+            break;
 
+
+        case 0: 
+            
+                
+            break;
+    }
+       
 
 
                    
+}
+public void Mroom()
+{
+    Console.WriteLine("[1] Show all rooms, [2] Create new room, [0] Back");
+    string AuswahlSubject = Console.ReadLine();
+    switch (AuswahlSubject)
+    {
+        case 1:
+            //Von Liste Anzeigen
+            foreach (Room r in Room.AllRooms)
+                Console.WriteLine(r.Abbreviation + " ");
+            Console.WriteLine("\n[0] Back");
+            int roomc1 = Console.ReadLine();
+            if (roomc1) = 0
+                    Mroom()
+            
+            break;
+
+        case 2:
+            Console.WriteLine("Name of room?");
+            string roomname = Console.ReadLine();
+           Room.AllRooms.Add(roomname)
+            Mroom()
+            
+            break;
+
+
+        case 0:
+
+
+            break;
+    }
+
+
+
+
+}
+public void MPlan()
+{
+    
+}
+public void MData()
+{ 
+
+}
+public void MTimetable() 
+{
+    Console.WriteLine("[1] Show Timetable, [2] Create Timetable, [0] Back");
+    string AntwortTimetable = Console.ReadLine();
+    switch(AntwortTimetable) 
+    {
+        case 1:
+            Console.WriteLine("[1] Class, [2] Student, [3] Teacher, [0] Back");
+            string AntwortTimetablec1 = Console.ReadLine();
+            switch (AntwortTimetablec1)
+            {
+                
+                case 1: ShowCofTimetable()
+                        break;
+                case 2: ShowSofTimetable()
+                        break;
+                case 3: ShowTofTimetable()
+                        break;
+                case 0: MTimetable()
+                        break;
+            }
+            break;
+            case 2: CreateTimetable()
+                break;
+            case 3: MTimetable()
+                break;
+    }
+}
+public void ShowCofTimetable() 
+{
+    Console.WriteLine("[1]Continue, [0] Back");
+    string AntwortCorB = Console.ReadLine();
+    if(AntwortCorB == 0)
+        MTimetable()
+    else { 
+        Console.WriteLine("Please enter firstname of Student");
+
+    string firstnameofstudent = Console.ReadLine();
+    Console.WriteLine("Please enter Surname of Student");
+    string surnameofstudent = Console.ReadLine();
+        for (int i = 0; i < Student.Allstudents.Count; i++)
+        {
+            if (Student[i].Firstname == firstnameofstudent &&
+                Student[i].Lastname == surnameofstudent)
+            {
+                //Stundenplan für Schüler i angeben
+
+            }
+            else { Console.WriteLine("Student not found. [0] Back");
+                int AntwortStudnetfound = Console.ReadLine();
+                if (AntwortStudnetfound == 0)
+                {
+                    ShowCofTimetable()
+                }
+            }
+
         }
+
+
+    
+}
+public void ShowSofTimetable()
+{
+    //Hier noch anzeigen
+}
+public void ShowTofTimetable()
+{
+    //Hier noch anzeigen
+}
+public void CreateTimetable()
+{
+    //Createn
+}
+
+
     }
 }

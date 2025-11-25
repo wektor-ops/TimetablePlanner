@@ -7,6 +7,18 @@
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:TimetablePlanner\\Program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Code\\TimetablePlanner\\TimetablePlanner\\room.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:TimetablePlanner\\room.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Code\\TimetablePlanner\\TimetablePlanner\\subject.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:TimetablePlanner\\subject.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Code\\TimetablePlanner\\TimetablePlanner\\Schoolclass.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:TimetablePlanner\\Schoolclass.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Code\\TimetablePlanner\\TimetablePlanner\\teacher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:TimetablePlanner\\teacher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -21,18 +33,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Code\\TimetablePlanner\\TimetablePlanner\\Evaluator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:TimetablePlanner\\Evaluator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Code\\TimetablePlanner\\TimetablePlanner\\room.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:TimetablePlanner\\room.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Code\\TimetablePlanner\\TimetablePlanner\\Schoolclass.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:TimetablePlanner\\Schoolclass.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Code\\TimetablePlanner\\TimetablePlanner\\subject.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:TimetablePlanner\\subject.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Code\\TimetablePlanner\\TimetablePlanner\\TimetableSlot.cs||{8B382828-6202-11D1-8870-0000F87579D2}",
@@ -58,7 +58,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 10,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -66,7 +66,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Code\\TimetablePlanner\\TimetablePlanner\\Program.cs",
+              "RelativeDocumentMoniker": "TimetablePlanner\\Program.cs",
+              "ToolTip": "C:\\Code\\TimetablePlanner\\TimetablePlanner\\Program.cs",
+              "RelativeToolTip": "TimetablePlanner\\Program.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAAACwAAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-31T07:58:02.09Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "teacher.cs",
               "DocumentMoniker": "C:\\Code\\TimetablePlanner\\TimetablePlanner\\teacher.cs",
               "RelativeDocumentMoniker": "TimetablePlanner\\teacher.cs",
@@ -78,7 +91,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 5,
               "Title": "student.cs",
               "DocumentMoniker": "C:\\Code\\TimetablePlanner\\TimetablePlanner\\student.cs",
               "RelativeDocumentMoniker": "TimetablePlanner\\student.cs",
@@ -114,7 +127,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 6,
               "Title": "Optimizer.cs",
               "DocumentMoniker": "C:\\Code\\TimetablePlanner\\TimetablePlanner\\Optimizer.cs",
               "RelativeDocumentMoniker": "TimetablePlanner\\Optimizer.cs",
@@ -126,7 +139,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 7,
               "Title": "Evaluator.cs",
               "DocumentMoniker": "C:\\Code\\TimetablePlanner\\TimetablePlanner\\Evaluator.cs",
               "RelativeDocumentMoniker": "TimetablePlanner\\Evaluator.cs",
@@ -138,7 +151,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 3,
               "Title": "Schoolclass.cs",
               "DocumentMoniker": "C:\\Code\\TimetablePlanner\\TimetablePlanner\\Schoolclass.cs",
               "RelativeDocumentMoniker": "TimetablePlanner\\Schoolclass.cs",
@@ -146,11 +159,12 @@
               "RelativeToolTip": "TimetablePlanner\\Schoolclass.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-31T08:17:28.763Z"
+              "WhenOpened": "2025-10-31T08:17:28.763Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 1,
               "Title": "room.cs",
               "DocumentMoniker": "C:\\Code\\TimetablePlanner\\TimetablePlanner\\room.cs",
               "RelativeDocumentMoniker": "TimetablePlanner\\room.cs",
@@ -158,11 +172,12 @@
               "RelativeToolTip": "TimetablePlanner\\room.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAACAAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-31T08:16:55.5Z"
+              "WhenOpened": "2025-10-31T08:16:55.5Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 2,
               "Title": "subject.cs",
               "DocumentMoniker": "C:\\Code\\TimetablePlanner\\TimetablePlanner\\subject.cs",
               "RelativeDocumentMoniker": "TimetablePlanner\\subject.cs",
@@ -170,19 +185,7 @@
               "RelativeToolTip": "TimetablePlanner\\subject.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-31T07:59:07.458Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Code\\TimetablePlanner\\TimetablePlanner\\Program.cs",
-              "RelativeDocumentMoniker": "TimetablePlanner\\Program.cs",
-              "ToolTip": "C:\\Code\\TimetablePlanner\\TimetablePlanner\\Program.cs",
-              "RelativeToolTip": "TimetablePlanner\\Program.cs",
-              "ViewState": "AgIAALoAAAAAAAAAAAAAAHEAAAApAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-31T07:58:02.09Z",
+              "WhenOpened": "2025-10-31T07:59:07.458Z",
               "EditorCaption": ""
             },
             {
