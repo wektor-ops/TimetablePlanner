@@ -67,6 +67,9 @@ namespace TimetablePlanner
                     
                         StudentShow()
                 break;
+                case 0:
+                    Main()
+                        break;
 
             }
         }
@@ -83,8 +86,13 @@ namespace TimetablePlanner
         
         public void StudentShow() 
         {
+            
             foreach (Student s in Student.Allstudents)
                 Console.WriteLine(s.Firstname + " " + s.Lastname + " - " + s.Class.Abbreviation);
+            Console.WriteLine("[0] Back");
+            int AntwortStudentShow = Console.ReadLine();
+            if(AntwortStudentShow == 0)
+                MStudent();
 
         }
         public void MTeacher() 
@@ -102,6 +110,9 @@ namespace TimetablePlanner
 
                     Teachershow()
                 break;
+                case 0:
+                    Main();
+                    break;
 
             }
         }
@@ -109,33 +120,43 @@ namespace TimetablePlanner
         {
             foreach (Teacher t in Teacher.AllTeachers)
                 Console.WriteLine(t.Firstname + " " + t.Lastname);
+            Console.WriteLine("[0] Back");
+            int AntwortTeacherShow = Console.ReadLine();
+            if(AntwortTeacherShow == 0)
+                MTeacher();
         }
         public void Teachernew() 
         {
-            Console.WriteLine("Please Enter fistname of teacher");
-            string teacherfirstname = Console.ReadLine();
-            Console.WriteLine("Please Enter lastname of teacher");
-            string teacherlastname = Console.ReadLine();
-            new Teacher(teacherfirstname, teacherlastname)
-            bool[,] Availability = new bool[Timetable.Days, Timetable.Hours];
-        Console.WriteLine("[1]Fulltime or [2]Parttime");
-            string Timeatwork = Console.ReadLine();
-            for (int d = 0; d < Timetable.Days; d++)
-            {
-                for (int h = 0; h < Timetable.Hours; h++)
-                {
-                    Availability[d, h] = true;
-                }
-            }
+            Console.WriteLine("[1]Continue, [0] Back");
+            string AntwortTeachernew = Console.ReadLine();
+            if (AntwortTeachernew == 0)
+                MTeacher();
+            else {
 
-            if (Timeatwork == 2) 
-            {
-                public string Daysoffwork;
+                Console.WriteLine("Please Enter fistname of teacher");
+                string teacherfirstname = Console.ReadLine();
+                Console.WriteLine("Please Enter lastname of teacher");
+                string teacherlastname = Console.ReadLine();
+                new Teacher(teacherfirstname, teacherlastname)
+            bool[,] Availability = new bool[Timetable.Days, Timetable.Hours];
+                Console.WriteLine("[1]Fulltime or [2]Parttime");
+                string Timeatwork = Console.ReadLine();
+                for (int d = 0; d < Timetable.Days; d++)
+                {
+                    for (int h = 0; h < Timetable.Hours; h++)
+                    {
+                        Availability[d, h] = true;
+                    }
+                }
+
+                if (Timeatwork == 2)
+                {
+                    string Daysoffwork;
                
                 do 
                 {
                     Console.WriteLine("Which days are you gone\n\n[Mo] Monday\n[Tu] Tuesday\n[We] Wednesday\n[Th] Thursday\n[Fr] Friday\n[X] Exit");
-                    Daysoffwork = Console.ReadLine();
+                     Daysoffwork = Console.ReadLine();
                     switch (Daysoffwork) 
                     {
                         case "Mo": Console.WriteLine("[M]Morning, [E]Evening or [W] Whole Day"); 
@@ -284,9 +305,12 @@ namespace TimetablePlanner
                             Availability[4, 10] = false;
                             break;
                     }
-                        
-                }
-                while(Daysoffwork != "X")
+                        Main();
+
+                    }
+while (Daysoffwork != "X")}
+                Main();
+
             }
     public void MSchoolclass() 
 {
@@ -305,7 +329,7 @@ namespace TimetablePlanner
             //wiktor frage
             break;
         case 0:
-            
+                    Main();
             break;
     }
 }
@@ -328,8 +352,8 @@ public void MSubject()
             break;
 
 
-        case 0: 
-            
+        case 0:
+                    MSchoolclass();
                 
             break;
     }
@@ -365,7 +389,7 @@ public void Mroom()
 
 
         case 0:
-
+                    Main();
 
             break;
     }
@@ -376,13 +400,13 @@ public void Mroom()
 }
 public void MPlan()
 {
-    
+    //Ka was da ihne muss bruche andei Sache
 }
 public void MData()
-{ 
-
+{
+            //Ka was da ihne muss bruche andei Sache
 }
-public void MTimetable() 
+        public void MTimetable() 
 {
     Console.WriteLine("[1] Show Timetable, [2] Create Timetable, [0] Back");
     string AntwortTimetable = Console.ReadLine();
@@ -408,15 +432,17 @@ public void MTimetable()
                 break;
             case 3: MTimetable()
                 break;
+                case 0:
+                    Main();
     }
 }
-public void ShowCofTimetable() 
+public void ShowSofTimetable() 
 {
     Console.WriteLine("[1]Continue, [0] Back");
     string AntwortCorB = Console.ReadLine();
     if(AntwortCorB == 0)
         MTimetable()
-    else { 
+    else if (AntwortCorB == 1) { 
         Console.WriteLine("Please enter firstname of Student");
 
     string firstnameofstudent = Console.ReadLine();
@@ -427,14 +453,17 @@ public void ShowCofTimetable()
             if (Student[i].Firstname == firstnameofstudent &&
                 Student[i].Lastname == surnameofstudent)
             {
-                //Stundenplan für Schüler i angeben
-
+                        //Stundenplan für Schüler i angeben
+                        Console.WriteLine("[0] Back to Menu");
+                        int AntwortStudentcorr = Console.ReadLine();
+                        if (AntwortStudentcorr == 0)
+                            Main();
             }
             else { Console.WriteLine("Student not found. [0] Back");
                 int AntwortStudnetfound = Console.ReadLine();
                 if (AntwortStudnetfound == 0)
                 {
-                    ShowCofTimetable()
+                            MTimetable();
                 }
             }
 
@@ -443,14 +472,82 @@ public void ShowCofTimetable()
 
     
 }
-public void ShowSofTimetable()
+public void ShowCofTimetable()
 {
-    //Hier noch anzeigen
-}
+            Console.WriteLine("[1]Continue, [0] Back");
+            string AntwortCorB = Console.ReadLine();
+            if (AntwortCorB == 0)
+                MTimetable()
+            else if (AntwortCorB == 1)
+            {
+                Console.WriteLine("Please enter Class abbrevation");
+
+                string Classabrv = Console.ReadLine();
+            
+                for (int i = 0; i < Schoolclass.AllClasses.Count; i++)
+                {
+                    //Schauen wie es Heisst
+                    if (Schoolclass[i].Abrr == Classabrv )
+                        
+                    {
+                        //Stundenplan für Classe i anzeigen
+                        Console.WriteLine("[0] Back to Menu");
+                        int AntwortStudentcorr = Console.ReadLine();
+                        if (AntwortStudentcorr == 0)
+                            Main();
+                    }
+                    else
+                    {
+                        Console.WriteLine("Class not found. [0] Back");
+                        int AntwortStudnetfound = Console.ReadLine();
+                        if (AntwortStudnetfound == 0)
+                        {
+                            MTimetable();
+                        }
+                    }
+
+                }
+
+
+
+            }
 public void ShowTofTimetable()
 {
-    //Hier noch anzeigen
-}
+
+            Console.WriteLine("[1]Continue, [0] Back");
+            string AntwortCorB = Console.ReadLine();
+            if (AntwortCorB == 0)
+                MTimetable()
+            else if (AntwortCorB == 1)
+            {
+                Console.WriteLine("Please enter firstname of Teacher");
+
+                string firstnameofteacher = Console.ReadLine();
+                Console.WriteLine("Please enter Surname of Teacher");
+                string surnameofteacher = Console.ReadLine();
+                for (int i = 0; i < Teacher.AllTeachers.Count; i++)
+                {
+                    if (Teacher[i].Firstname == firstnameofteacher &&
+                        Teacher[i].Lastname == surnameofteacher)
+                    {
+                        //Stundenplan für Teacher i angeben
+                        Console.WriteLine("[0] Back to Menu");
+                        int AntwortTeachercorr = Console.ReadLine();
+                        if (AntwortTeachercorr == 0)
+                            Main();
+                    }
+                    else
+                    {
+                        Console.WriteLine("Teacher not found. [0] Back");
+                        int AntwortTeacherfound = Console.ReadLine();
+                        if (AntwortTeacherfound == 0)
+                        {
+                            MTimetable();
+                        }
+                    }
+
+                }
+            }
 public void CreateTimetable()
 {
     //Createn
