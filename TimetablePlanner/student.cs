@@ -8,6 +8,8 @@ namespace TimetablePlanner
 {
     internal class Student
     {
+        public static List<Student> Allstudents = new List<Student>();
+
         int _studentId;
         static int _iddistributor = 1;
         string _firstname;

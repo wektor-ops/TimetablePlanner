@@ -20,7 +20,7 @@ namespace TimetablePlanner
         public string Abbrevation { get { return _abbreviation; }}
         public string Firstname { get { return _firstname; } set { _firstname = value; } }
         public string LastName { get { return _lastName; } set { _lastName = value; } }
-        public bool[,] Availability { get; set; } = new bool[Timetable.days, Timetable.hours];
+        public bool[,] Availability { get; set; } = new bool[Timetable.Days, Timetable.Hours];
         // wichtig wenn jan fertig ist mit Timetable public static int days = 5; und public static int hours = ??; hinzufügen
 
         public Teacher(string newFirstname, string newLastname, bool[,] newAvailability)
