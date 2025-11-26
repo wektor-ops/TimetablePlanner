@@ -7,19 +7,21 @@ using System.Web;
 
 namespace TimetablePlanner
 {
-    internal class Subject
+    public class Subject
     {
         private string _abbreviation;
-     
+        public static List<Subject> AllSubjects = new List<Subject>();
+
         public string Abbreviation
         {
             get { return _abbreviation; }
             set { _abbreviation = value; }
         }
 
-        public Subject(string abbreviation) 
+        public Subject(string abbreviation)
         {
-            Abbreviation = abbreviation; 
+            Abbreviation = abbreviation;
+            AllSubjects.Add(this);
         }
     }
 }

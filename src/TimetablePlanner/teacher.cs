@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace TimetablePlanner
 {
-    internal class Teacher
+    public class Teacher
     {
         public static List<Teacher> AllTeachers = new List<Teacher>();
         public TimetableSlot[,] TeacherPlan;
 
         int _teacherId;
-        static int _iddistributor = 1;
+        internal static int _iddistributor = 1;
         string _abbreviation;
         string _firstname;
         string _lastName;

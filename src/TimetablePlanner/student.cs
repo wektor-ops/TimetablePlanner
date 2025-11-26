@@ -6,13 +6,12 @@ using System.Threading.Tasks;
 
 namespace TimetablePlanner
 {
-    internal class Student
+    public class Student
     {
         int _studentId;
-        static int _iddistributor = 1;
+        internal static int _iddistributor = 1;
         string _firstname;
         string _lastname;
-        //public List<Subject> _additionalSubject;
         public int StudentId { get { return _studentId; } }
         public string Firstname { get { return _firstname; } }
         public string Lastname { get { return _lastname; } }

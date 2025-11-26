@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TimetablePlanner
 {
-    internal class Room
+    public class Room
     {
         public static List<Room> AllRooms = new List<Room>();
         public TimetableSlot[,] RoomPlan;

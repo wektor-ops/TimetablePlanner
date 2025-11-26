@@ -5,9 +5,9 @@ using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TimetablePlanner    
+namespace TimetablePlanner
 {
-    internal class Schoolclass
+    public class Schoolclass
     {
         public static List<Schoolclass> AllClasses = new List<Schoolclass>();
         public TimetableSlot[,] ClassPlan;
@@ -41,6 +41,9 @@ namespace TimetablePlanner
                 Schoolclass newClass = new Schoolclass { Abbreviation = firstAbbr, ClassPlan = new TimetableSlot[Timetable.Days, Timetable.Hours] };
                 newClass.AddStudent(s);
                 AllClasses.Add(newClass);
+                Timetable.ClearAllPlans();
+                Timetable.Build();
+                Datamanager.SaveData();
             }
         }
 
@@ -62,6 +65,9 @@ namespace TimetablePlanner
 
             newClass.AddStudent(newStudent);
             AllClasses.Add(newClass);
+            Timetable.ClearAllPlans();
+            Timetable.Build();
+            Datamanager.SaveData();
 
         }
 
@@ -74,7 +80,7 @@ namespace TimetablePlanner
         }
         private static string GenerateNewAbbreviation()
         {
-            int currentYear = DateTime.Now.Year % 100; // Jahr berechnen
+            int currentYear = DateTime.Now.Year % 100; 
 
             if (AllClasses.Count == 0)
                 return $"A{currentYear:D2}A";
@@ -84,7 +90,6 @@ namespace TimetablePlanner
             char prefix = last[0];
             char suffix = last[3];
 
-            // Wenn letzte Klasse "A25Z" ist, dann nächste Klasse "B25A"
             if (suffix == 'Z')
             {
                 prefix = (char)(prefix + 1);
@@ -102,10 +107,43 @@ namespace TimetablePlanner
         {
             if (IsFull) return false;
             Students.Add(s);
-            s.Class = this;
             return true;
         }
-    }
+        public Schoolclass Clone()
+        {
+            Schoolclass newClass = new Schoolclass
+            {
+                Abbreviation = this.Abbreviation,
+                MaxCapacity = this.MaxCapacity,
 
+                Students = this.Students.ToList(), 
+                Curriculum = this.Curriculum.ToList(), 
+            };
+
+            newClass.ClassPlan = new TimetableSlot[Timetable.Days, Timetable.Hours];
+
+            for (int d = 0; d < Timetable.Days; d++)
+            {
+                for (int h = 0; h < Timetable.Hours; h++)
+                {
+                    TimetableSlot originalSlot = this.ClassPlan[d, h];
+
+                    if (originalSlot != null)
+                    {
+                        newClass.ClassPlan[d, h] = originalSlot.Clone();
+                    }
+                    else
+                    {
+                        newClass.ClassPlan[d, h] = null;
+                    }
+                }
+            }
+
+            return newClass;
+        }
+
+    }
 }
+    
+
  

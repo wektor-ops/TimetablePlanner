@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace TimetablePlanner
 {
-	internal class TimetableSlot
+	public class TimetableSlot
 	{
         public Teacher assignedTeacher { get; set; }
         public Subject assignedSubject { get; set; }
@@ -27,6 +27,17 @@ namespace TimetablePlanner
             this.assignedSchoolclass = assignedSchoolclass;
             this.day = day;
             this.hour = hour;
+        }
+        public TimetableSlot Clone()
+        {
+        return new TimetableSlot(
+        this.assignedTeacher,
+        this.assignedSubject,
+        this.assignedRoom,
+        this.assignedSchoolclass,
+        this.day,
+        this.hour
+        );
         }
     }
 }
