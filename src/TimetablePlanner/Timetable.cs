@@ -58,7 +58,19 @@ namespace TimetablePlanner
             Console.WriteLine("║ 18:00  ║   Ma   Gok     ║   Ma   Gok     ║   Ma   Gok     ║   Ma   Gok     ║   Ma   Gok     ║");
             Console.WriteLine("║        ║ D24a   R102    ║ D24a   R102    ║ D24a   R102    ║ D24a   R102    ║ D24a   R102    ║");
             Console.WriteLine("╚════════╩════════════════╩════════════════╩════════════════╩════════════════╩════════════════╝");
-            //
+            foreach (Schoolclass schoolClass in Schoolclass.AllClasses)
+            {
+                Student foundStudent = schoolClass.Students.Find(s => s.Firstname == "Jan");
+                if (foundStudent != null)
+                {
+                    Console.Write(schoolClass.Abbreviation);
+                    Console.Write(schoolClass.ClassPlan[0, 0].assignedSubject.Abbreviation);
+                    Console.Write(schoolClass.ClassPlan[0, 0].assignedRoom.Abbreviation);
+                    Console.Write(schoolClass.ClassPlan[0, 0].assignedTeacher.Abbreviation);
+                }
+            }
+            Console.Write(Room.AllRooms.Find(r => r.Abbreviation == "D24a").RoomPlan[0, 0]);
+            Console.Write(Teacher.AllTeachers.Find(t => t.Firstname == "Jan").TeacherPlan[0, 0]);
         }
         public static void Build()
         {

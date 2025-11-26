@@ -18,7 +18,7 @@ namespace TimetablePlanner
         string _lastName;
 
         public int TeacherId { get { return _teacherId; }}
-        public string Abbrevation { get { return _abbreviation; }}
+        public string Abbreviation { get { return _abbreviation; }}
         public string Firstname { get { return _firstname; } set { _firstname = value; } }
         public string LastName { get { return _lastName; } set { _lastName = value; } }
         public bool[,] Availability { get; set; } = new bool[Timetable.Days, Timetable.Hours];
