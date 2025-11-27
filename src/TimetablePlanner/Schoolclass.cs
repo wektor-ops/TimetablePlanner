@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace TimetablePlanner
@@ -10,13 +11,14 @@ namespace TimetablePlanner
     public class Schoolclass
     {
         public static List<Schoolclass> AllClasses = new List<Schoolclass>();
-        public TimetableSlot[,] ClassPlan;
+        [JsonIgnore]
+        public TimetableSlot[,] ClassPlan { get; set; }
 
-        public string Abbreviation = "";
-        public List<Student> Students = new List<Student>();
-        public List<Subject> Curriculum = new List<Subject>();
+        public string Abbreviation { get; set; }
+        public List<Student> Students { get; set; } = new List<Student>();
+        public List<Subject> Curriculum { get; set; } = new List<Subject>();
 
-        public int MaxCapacity = 20;
+        public int MaxCapacity { get; set; }  = 20;
         public bool IsFull { get { if (Students.Count >= MaxCapacity) return true; return false; } }
 
         public static void AssignStudent(Student s)
@@ -26,6 +28,7 @@ namespace TimetablePlanner
                 if (!c.IsFull)
                 {
                     c.AddStudent(s);
+                    Datamanager.SaveData();
                     return;
                 }
             }
@@ -41,9 +44,9 @@ namespace TimetablePlanner
                 Schoolclass newClass = new Schoolclass { Abbreviation = firstAbbr, ClassPlan = new TimetableSlot[Timetable.Days, Timetable.Hours] };
                 newClass.AddStudent(s);
                 AllClasses.Add(newClass);
-                Timetable.ClearAllPlans();
-                Timetable.Build();
-                Datamanager.SaveData();
+                if (Teacher.AllTeachers.Count >= AllClasses.Count && Room.AllRooms.Count >= AllClasses.Count)
+                    Timetable.Build();
+                else Console.WriteLine("Not enough teachers/rooms available.");
             }
         }
 
@@ -65,14 +68,19 @@ namespace TimetablePlanner
 
             newClass.AddStudent(newStudent);
             AllClasses.Add(newClass);
-            Timetable.ClearAllPlans();
-            Timetable.Build();
-            Datamanager.SaveData();
+            if (Teacher.AllTeachers.Count >= AllClasses.Count && Room.AllRooms.Count >= AllClasses.Count)
+                Timetable.Build();
+            else Console.WriteLine("Not enough teachers/rooms available.");
 
         }
 
         public void AddToCurriculum(Subject subject, int perweek)
         {
+            if (Curriculum.Count + perweek > Timetable.Days * Timetable.Hours)
+            {
+                Console.WriteLine("not enough lessons to add {0}", subject.Abbreviation);
+                return;
+            }
             for (int i = 0; i < perweek; i++)
             {
                 Curriculum.Add(subject);
@@ -141,6 +149,8 @@ namespace TimetablePlanner
 
             return newClass;
         }
+        public Schoolclass()
+        { }
 
     }
 }

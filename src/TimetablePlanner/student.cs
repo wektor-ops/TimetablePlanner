@@ -9,12 +9,18 @@ namespace TimetablePlanner
     public class Student
     {
         int _studentId;
-        internal static int _iddistributor = 1;
+        internal static int _iddistributor  = 1;
         string _firstname;
         string _lastname;
-        public int StudentId { get { return _studentId; } }
-        public string Firstname { get { return _firstname; } }
-        public string Lastname { get { return _lastname; } }
+        public int StudentId { get { return _studentId; }
+            set { _studentId = value; }
+        }
+        public string Firstname { get { return _firstname; }
+                                    set { _firstname = value; }
+        }
+        public string Lastname { get { return _lastname; }
+            set { _lastname = value; }
+        }
 
 
        
@@ -25,6 +31,8 @@ namespace TimetablePlanner
             _lastname = lastname;
             Schoolclass.AssignStudent(this);
         }
+        public Student()
+        { }
 
     }
 }

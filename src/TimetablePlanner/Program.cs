@@ -14,14 +14,40 @@ namespace TimetablePlanner
         {
             Program p = new Program();
             Datamanager.LoadData();
+            int newValue;
+
+            Console.Write($"Lücken (penalty_Gap, aktuell: {Timetable.penalty_Gap}). Neuer Wert: ");
+            if (int.TryParse(Console.ReadLine(), out newValue) && newValue >= 0)
+            {
+                Timetable.penalty_Gap = newValue;
+            }
+
+            Console.Write($"Raumwechsel (penalty_RoomChange, aktuell: {Timetable.penalty_RoomChange}). Neuer Wert: ");
+            if (int.TryParse(Console.ReadLine(), out newValue) && newValue >= 0)
+            {
+                Timetable.penalty_RoomChange = newValue;
+            }
+
+            Console.Write($"Randstunden (penalty_EdgeHour, aktuell: {Timetable.penalty_EdgeHour}). Neuer Wert: ");
+            if (int.TryParse(Console.ReadLine(), out newValue) && newValue >= 0)
+            {
+                Timetable.penalty_EdgeHour = newValue;
+            }
+
+            Console.Write($"Raumnutzung (penalty_RoomsUse, aktuell: {Timetable.penalty_RoomsUse}). Neuer Wert: ");
+            if (int.TryParse(Console.ReadLine(), out newValue) && newValue >= 0)
+            {
+                Timetable.penalty_RoomsUse = newValue;
+            }
             p.FirstQ();
+            Datamanager.SaveData();
         }
         public void FirstQ()
         {
             do
             {
                 Console.Clear();
-                Console.WriteLine("[1] Student\n[2] Teacher\n[3] Schoolclass\n[4] Subject\n[5] Room\n [6] Timetable\n [0] End Program");
+                Console.WriteLine(" [1] Student\n [2] Teacher\n [3] Schoolclass\n [4] Subject\n [5] Room\n [6] Timetable\n [0] End Program");
                 string Auswahl = Console.ReadLine();
 
                 switch (Auswahl)
@@ -41,7 +67,7 @@ namespace TimetablePlanner
                     case "4":
                         MSubject();
                         break;
-                    case "5":
+                    case "5": 
                         Mroom();
                         break;
                     case "6":
@@ -71,11 +97,12 @@ namespace TimetablePlanner
                     case "1":
 
 
-                        Studentnew();
+                        StudentShow();
                         break;
                     case "2":
 
-                        StudentShow();
+                        
+                        Studentnew();
                         break;
                     case "0":
                         return;
@@ -95,6 +122,7 @@ namespace TimetablePlanner
             string studentlastname = Console.ReadLine();
 
             new Student(studentfirstname, studentlastname);
+            Datamanager.SaveData();
 
         }
 
@@ -124,11 +152,12 @@ namespace TimetablePlanner
                 {
                     case "1":
 
-                        Teachernew();
+                        Teachershow();
+                        
                         break;
                     case "2":
 
-                        Teachershow();
+                        Teachernew();
                         break;
                     case "0":
                         return;
@@ -189,160 +218,193 @@ namespace TimetablePlanner
                                 Console.WriteLine("[M]Morning, [E]Evening or [W] Whole Day");
                                 string MOE = Console.ReadLine();
                                 if (MOE == "M")
+                                {
                                     Availability[0, 0] = false;
-                                Availability[0, 1] = false;
-                                Availability[0, 2] = false;
-                                Availability[0, 3] = false;
-                                Availability[0, 4] = false;
+                                    Availability[0, 1] = false;
+                                    Availability[0, 2] = false;
+                                    Availability[0, 3] = false;
+                                    Availability[0, 4] = false;
+                                }
                                 if (MOE == "E")
+                                {
                                     Availability[0, 5] = false;
-                                Availability[0, 6] = false;
-                                Availability[0, 7] = false;
-                                Availability[0, 8] = false;
-                                Availability[0, 9] = false;
-                                Availability[0, 10] = false;
+                                    Availability[0, 6] = false;
+                                    Availability[0, 7] = false;
+                                    Availability[0, 8] = false;
+                                    Availability[0, 9] = false;
+                                    Availability[0, 10] = false;
+                                }
                                 if (MOE == "W")
+                                {
                                     Availability[0, 0] = false;
-                                Availability[0, 1] = false;
-                                Availability[0, 2] = false;
-                                Availability[0, 3] = false;
-                                Availability[0, 4] = false;
-                                Availability[0, 5] = false;
-                                Availability[0, 6] = false;
-                                Availability[0, 7] = false;
-                                Availability[0, 8] = false;
-                                Availability[0, 9] = false;
-                                Availability[0, 10] = false;
+                                    Availability[0, 1] = false;
+                                    Availability[0, 2] = false;
+                                    Availability[0, 3] = false;
+                                    Availability[0, 4] = false;
+                                    Availability[0, 5] = false;
+                                    Availability[0, 6] = false;
+                                    Availability[0, 7] = false;
+                                    Availability[0, 8] = false;
+                                    Availability[0, 9] = false;
+                                    Availability[0, 10] = false;
+                                }
                                 break;
 
                             case "Tu":
                                 Console.WriteLine("[M]Morning, [E]Evening or [W] Whole Day");
                                 string MOET = Console.ReadLine();
                                 if (MOET == "M")
+                                {
                                     Availability[1, 0] = false;
-                                Availability[1, 1] = false;
-                                Availability[1, 2] = false;
-                                Availability[1, 3] = false;
-                                Availability[1, 4] = false;
+                                    Availability[1, 1] = false;
+                                    Availability[1, 2] = false;
+                                    Availability[1, 3] = false;
+                                    Availability[1, 4] = false;
+                                }
                                 if (MOET == "E")
+                                {
                                     Availability[1, 5] = false;
-                                Availability[1, 6] = false;
-                                Availability[1, 7] = false;
-                                Availability[1, 8] = false;
-                                Availability[1, 9] = false;
-                                Availability[1, 10] = false;
+                                    Availability[1, 6] = false;
+                                    Availability[1, 7] = false;
+                                    Availability[1, 8] = false;
+                                    Availability[1, 9] = false;
+                                    Availability[1, 10] = false;
+                                }
                                 if (MOET == "W")
+                                {
                                     Availability[1, 0] = false;
-                                Availability[1, 1] = false;
-                                Availability[1, 2] = false;
-                                Availability[1, 3] = false;
-                                Availability[1, 4] = false;
-                                Availability[1, 5] = false;
-                                Availability[1, 6] = false;
-                                Availability[1, 7] = false;
-                                Availability[1, 8] = false;
-                                Availability[1, 9] = false;
-                                Availability[1, 10] = false;
+                                    Availability[1, 1] = false;
+                                    Availability[1, 2] = false;
+                                    Availability[1, 3] = false;
+                                    Availability[1, 4] = false;
+                                    Availability[1, 5] = false;
+                                    Availability[1, 6] = false;
+                                    Availability[1, 7] = false;
+                                    Availability[1, 8] = false;
+                                    Availability[1, 9] = false;
+                                    Availability[1, 10] = false;
+                                }
                                 break;
                             case "We":
                                 Console.WriteLine("[M]Morning, [E]Evening or [W] Whole Day");
                                 string MOEW = Console.ReadLine();
                                 if (MOEW == "M")
+                                {
                                     Availability[2, 0] = false;
-                                Availability[2, 1] = false;
-                                Availability[2, 2] = false;
-                                Availability[2, 3] = false;
-                                Availability[2, 4] = false;
+                                    Availability[2, 1] = false;
+                                    Availability[2, 2] = false;
+                                    Availability[2, 3] = false;
+                                    Availability[2, 4] = false;
+                                }
                                 if (MOEW == "E")
+                                {
                                     Availability[2, 5] = false;
-                                Availability[2, 6] = false;
-                                Availability[2, 7] = false;
-                                Availability[2, 8] = false;
-                                Availability[2, 9] = false;
-                                Availability[2, 10] = false;
+                                    Availability[2, 6] = false;
+                                    Availability[2, 7] = false;
+                                    Availability[2, 8] = false;
+                                    Availability[2, 9] = false;
+                                    Availability[2, 10] = false;
+                                }
                                 if (MOEW == "W")
+                                {
                                     Availability[2, 0] = false;
-                                Availability[2, 1] = false;
-                                Availability[2, 2] = false;
-                                Availability[2, 3] = false;
-                                Availability[2, 4] = false;
-                                Availability[2, 5] = false;
-                                Availability[2, 6] = false;
-                                Availability[2, 7] = false;
-                                Availability[2, 8] = false;
-                                Availability[2, 9] = false;
-                                Availability[2, 10] = false;
+                                    Availability[2, 1] = false;
+                                    Availability[2, 2] = false;
+                                    Availability[2, 3] = false;
+                                    Availability[2, 4] = false;
+                                    Availability[2, 5] = false;
+                                    Availability[2, 6] = false;
+                                    Availability[2, 7] = false;
+                                    Availability[2, 8] = false;
+                                    Availability[2, 9] = false;
+                                    Availability[2, 10] = false;
+                                }
                                 break;
                             case "Th":
                                 Console.WriteLine("[M]Morning, [E]Evening or [W] Whole Day");
                                 string MOETH = Console.ReadLine();
                                 if (MOETH == "M")
+                                {
                                     Availability[3, 0] = false;
-                                Availability[3, 1] = false;
-                                Availability[3, 2] = false;
-                                Availability[3, 3] = false;
-                                Availability[3, 4] = false;
+                                    Availability[3, 1] = false;
+                                    Availability[3, 2] = false;
+                                    Availability[3, 3] = false;
+                                    Availability[3, 4] = false;
+                                }
                                 if (MOETH == "E")
+                                {
                                     Availability[3, 5] = false;
-                                Availability[3, 6] = false;
-                                Availability[3, 7] = false;
-                                Availability[3, 8] = false;
-                                Availability[3, 9] = false;
-                                Availability[3, 10] = false;
+                                    Availability[3, 6] = false;
+                                    Availability[3, 7] = false;
+                                    Availability[3, 8] = false;
+                                    Availability[3, 9] = false;
+                                    Availability[3, 10] = false;
+                                }
                                 if (MOETH == "W")
+                                {
                                     Availability[3, 0] = false;
-                                Availability[3, 1] = false;
-                                Availability[3, 2] = false;
-                                Availability[3, 3] = false;
-                                Availability[3, 4] = false;
-                                Availability[3, 5] = false;
-                                Availability[3, 6] = false;
-                                Availability[3, 7] = false;
-                                Availability[3, 8] = false;
-                                Availability[3, 9] = false;
-                                Availability[3, 10] = false;
+                                    Availability[3, 1] = false;
+                                    Availability[3, 2] = false;
+                                    Availability[3, 3] = false;
+                                    Availability[3, 4] = false;
+                                    Availability[3, 5] = false;
+                                    Availability[3, 6] = false;
+                                    Availability[3, 7] = false;
+                                    Availability[3, 8] = false;
+                                    Availability[3, 9] = false;
+                                    Availability[3, 10] = false;
+                                }
                                 break;
                             case "Fr":
                                 Console.WriteLine("[M]Morning, [E]Evening or [W] Whole Day");
                                 string MOEF = Console.ReadLine();
                                 if (MOEF == "M")
+                                {
                                     Availability[4, 0] = false;
-                                Availability[4, 1] = false;
-                                Availability[4, 2] = false;
-                                Availability[4, 3] = false;
-                                Availability[4, 4] = false;
+                                    Availability[4, 1] = false;
+                                    Availability[4, 2] = false;
+                                    Availability[4, 3] = false;
+                                    Availability[4, 4] = false;
+                                }
                                 if (MOEF == "E")
+                                {
                                     Availability[4, 5] = false;
-                                Availability[4, 6] = false;
-                                Availability[4, 7] = false;
-                                Availability[4, 8] = false;
-                                Availability[4, 9] = false;
-                                Availability[4, 10] = false;
+                                    Availability[4, 6] = false;
+                                    Availability[4, 7] = false;
+                                    Availability[4, 8] = false;
+                                    Availability[4, 9] = false;
+                                    Availability[4, 10] = false;
+                                }
                                 if (MOEF == "W")
+                                {
                                     Availability[4, 0] = false;
-                                Availability[4, 1] = false;
-                                Availability[4, 2] = false;
-                                Availability[4, 3] = false;
-                                Availability[4, 4] = false;
-                                Availability[4, 5] = false;
-                                Availability[4, 6] = false;
-                                Availability[4, 7] = false;
-                                Availability[4, 8] = false;
-                                Availability[4, 9] = false;
-                                Availability[4, 10] = false;
+                                    Availability[4, 1] = false;
+                                    Availability[4, 2] = false;
+                                    Availability[4, 3] = false;
+                                    Availability[4, 4] = false;
+                                    Availability[4, 5] = false;
+                                    Availability[4, 6] = false;
+                                    Availability[4, 7] = false;
+                                    Availability[4, 8] = false;
+                                    Availability[4, 9] = false;
+                                    Availability[4, 10] = false;
+                                }
                                 break;
                         }
-                        new Teacher(teacherfirstname, teacherlastname, Availability);
-                        Timetable.ClearAllPlans();
-                        Timetable.Build();
-                        Datamanager.SaveData();
-                        return;
+                        
 
                     }
                     while (Daysoffwork != "X");
                 }
-                return;
+                new Teacher(teacherfirstname, teacherlastname, Availability);
 
+                if (Teacher.AllTeachers.Count >= Schoolclass.AllClasses.Count && Room.AllRooms.Count >= Schoolclass.AllClasses.Count)
+                {
+                    Timetable.Build();
+                }
+                else Console.WriteLine("Not enough teachers/rooms available.");
+                Datamanager.SaveData();
+                return;
             }
         }
         public void MSchoolclass()
@@ -372,7 +434,7 @@ namespace TimetablePlanner
         {
             do
             {
-                Console.WriteLine("[1] Do you want to add a Subject to a already existing class?, [0] Back ");
+                Console.WriteLine("\n[1] Do you want to add a Subject to a already existing class?, [0] Back ");
                 string AntwortC2OfMScm = Console.ReadLine();
                 if (AntwortC2OfMScm == "0")
                 {
@@ -381,27 +443,26 @@ namespace TimetablePlanner
                 else
                 {
 
-                    foreach (Subject sj in Subject.AllSubjects)
-                        Console.Write(sj.Abbreviation + " ");
-                    Console.WriteLine("Enter Abrrivation of Class where you want to change Curriculum");
+                    Console.WriteLine("\n\nEnter Abrrivation of Class where you want to change Curriculum");
                     string ClassofCurriculum = Console.ReadLine();
                     if (Schoolclass.AllClasses.Find(sc => sc.Abbreviation == ClassofCurriculum) != null)
                     {
-
-                        Console.WriteLine("Enter Abrrivation of chosen Subject");
+                        foreach (Subject sj in Subject.AllSubjects)
+                            Console.Write(sj.Abbreviation + " ");
+                        Console.WriteLine("\nEnter Abrrivation of chosen Subject");
                         string EAOCS = Console.ReadLine();
 
                         if (Subject.AllSubjects.Find(s => s.Abbreviation == EAOCS) != null)
                         {
                             Console.WriteLine("How many lessons per week in this Subject?");
                             int LessonsofSubjectperweek = int.Parse(Console.ReadLine());
-                            //for mit anzahl durchgänge lessensofs und objekt Eaocs.curriculum hinzufügen
                             for (int i = 0; i < LessonsofSubjectperweek; i++)
                             {
                                 Schoolclass.AllClasses.Find(sc => sc.Abbreviation == ClassofCurriculum).Curriculum.Add(Subject.AllSubjects.Find(s => s.Abbreviation == EAOCS));
                             }
-                            Timetable.ClearAllPlans();
-                            Timetable.Build();
+                            if (Teacher.AllTeachers.Count >= Schoolclass.AllClasses.Count && Room.AllRooms.Count >= Schoolclass.AllClasses.Count)
+                                Timetable.Build();
+                            else Console.WriteLine("Not enough teachers/rooms available.");
                             Datamanager.SaveData();
                         }
                         else
@@ -433,12 +494,13 @@ namespace TimetablePlanner
 
                     foreach (Subject sj in Subject.AllSubjects)
                         Console.Write(sj.Abbreviation + " ");
+                    Console.ReadKey();
                     break;
 
                 case "2":
                     foreach (Subject sj in Subject.AllSubjects)
                         Console.Write(sj.Abbreviation + " ");
-                    Console.WriteLine("Abbrevation of subject?");
+                    Console.WriteLine("\nAbbrevation of subject?");
                     string subjectabrrvation = Console.ReadLine();
 
 
@@ -479,7 +541,7 @@ namespace TimetablePlanner
                     Console.WriteLine("Name of room?");
                     string roomname = Console.ReadLine();
 
-                    while (roomname.Length == 4)
+                    while (roomname.Length != 4)
                     {
                         Console.WriteLine("The name has to be 4 characters long: ");
                         roomname = Console.ReadLine();
@@ -487,8 +549,9 @@ namespace TimetablePlanner
 
 
                     Room.AllRooms.Add(new Room(roomname));
-                    Timetable.ClearAllPlans();
-                    Timetable.Build();
+                    if (Teacher.AllTeachers.Count >= Schoolclass.AllClasses.Count && Room.AllRooms.Count >= Schoolclass.AllClasses.Count)
+                        Timetable.Build();
+                    else Console.WriteLine("Not enough teachers/rooms available.");
                     Datamanager.SaveData();
 
 
@@ -564,14 +627,15 @@ namespace TimetablePlanner
                     Console.WriteLine("Please enter Surname of Student");
                     string surnameofstudent = Console.ReadLine();
 
+                    string AntwortStudentcorr;
                     foreach (Schoolclass schoolClass in Schoolclass.AllClasses)
                     {
                         foundStudent = schoolClass.Students.Find(s => s.Firstname == firstnameofstudent && s.Lastname == surnameofstudent);
-                        if (foundStudent != null)
+                        if (foundStudent != null && schoolClass.ClassPlan != null)
                         {
-                            Timetable.OutputTimetableofClass(schoolClass);
+                            Timetable.OutputTimetable(schoolClass);
                             Console.WriteLine("[0] Back to Menu");
-                            string AntwortStudentcorr = Console.ReadLine();
+                            AntwortStudentcorr = Console.ReadLine();
                             if (AntwortStudentcorr == "0")
                                 return;
                         }
@@ -580,6 +644,10 @@ namespace TimetablePlanner
 
 
                     }
+                    Console.WriteLine("[0] Back to Menu");
+                    AntwortStudentcorr = Console.ReadLine();
+                    if (AntwortStudentcorr == "0")
+                        return;
                 } while (true);
             }
 
@@ -594,19 +662,21 @@ namespace TimetablePlanner
             {
                 do
                 {
-                    Console.WriteLine("Please enter Class abbrevation");
+                    foreach (Schoolclass c in Schoolclass.AllClasses)
+                        Console.Write(c.Abbreviation + " ");
+                    Console.WriteLine("\nPlease enter Class abbrevation");
 
                     string Classabrv = Console.ReadLine();
 
-
+                    string AntworClasscorr;
                     foreach (Schoolclass schoolClass in Schoolclass.AllClasses)
                     {
                         Schoolclass foundclass = Schoolclass.AllClasses.Find(c => c.Abbreviation == Classabrv);
-                        if (foundclass != null)
+                        if (foundclass != null && foundclass.ClassPlan != null)
                         {
-                            Timetable.OutputTimetableofClass(foundclass);
+                            Timetable.OutputTimetable(foundclass);
                             Console.WriteLine("[0] Back to Menu");
-                            string AntworClasscorr = Console.ReadLine();
+                            AntworClasscorr = Console.ReadLine();
                             if (AntworClasscorr == "0")
                                 return;
                         }
@@ -614,6 +684,10 @@ namespace TimetablePlanner
 
 
                     }
+                    Console.WriteLine("[0] Back to Menu");
+                    AntworClasscorr = Console.ReadLine();
+                    if (AntworClasscorr == "0")
+                        return;
                 } while (true);
 
 
@@ -628,21 +702,27 @@ namespace TimetablePlanner
                 return;
             else if (AntwortCorB == "1")
             {
-                Console.WriteLine("Please enter firstname of Teacher");
+                foreach (Teacher t in Teacher.AllTeachers)
+                    Console.Write(t.Abbreviation + " ");
+                Console.WriteLine("\nPlease enter firstname of Teacher");
 
                 string firstnameofteacher = Console.ReadLine();
                 Console.WriteLine("Please enter Surname of Teacher");
                 string surnameofteacher = Console.ReadLine();
 
-                if (Teacher.AllTeachers.Find(t => t.Firstname == firstnameofteacher && t.LastName == surnameofteacher) != null)
+                string AntwortTeachercorr;
+                if (Teacher.AllTeachers.Find(t => t.Firstname == firstnameofteacher && t.LastName == surnameofteacher) != null && Teacher.AllTeachers.Find(t => t.Firstname == firstnameofteacher && t.LastName == surnameofteacher).TeacherPlan != null)
                 {
-                    Timetable.OutputTimetableofTeacher(Teacher.AllTeachers.Find(t => t.Firstname == firstnameofteacher && t.LastName == surnameofteacher));
+                    Timetable.OutputTimetable(Teacher.AllTeachers.Find(t => t.Firstname == firstnameofteacher && t.LastName == surnameofteacher));
                     Console.WriteLine("[0] Back to Menu");
-                    string AntwortTeachercorr = Console.ReadLine();
+                    AntwortTeachercorr = Console.ReadLine();
                     if (AntwortTeachercorr == "0")
                         return;
                 }
-
+                Console.WriteLine("[0] Back to Menu");
+                AntwortTeachercorr = Console.ReadLine();
+                if (AntwortTeachercorr == "0")
+                    return;
             }
         }
         public void ShowRofTimetable()
@@ -653,13 +733,15 @@ namespace TimetablePlanner
                 return;
             else if (AntwortCorB == "1")
             {
-                Console.WriteLine("Please enter Abrrevation of Room(4 Characters)");
+                foreach (Room r in Room.AllRooms)
+                    Console.Write(r.Abbreviation + " ");
+                Console.WriteLine("\nPlease enter Abrrevation of Room(4 Characters)");
                 string SFRA = Console.ReadLine();
                 if (SFRA.Length == 4)
                 {
-                    if (Room.AllRooms.Find(r => r.Abbreviation == SFRA) != null)
+                    if (Room.AllRooms.Find(r => r.Abbreviation == SFRA) != null && Room.AllRooms.Find(r => r.Abbreviation == SFRA).RoomPlan != null)
                     {
-                        Timetable.OutputTimetableofRoom(Room.AllRooms.Find(r => r.Abbreviation == SFRA));
+                        Timetable.OutputTimetable(Room.AllRooms.Find(r => r.Abbreviation == SFRA));
                         Console.WriteLine("[0] Back to Menu");
                         string AntwortRoomcorr = Console.ReadLine();
                         if (AntwortRoomcorr == "0")

@@ -39,5 +39,7 @@ namespace TimetablePlanner
         this.hour
         );
         }
+        public TimetableSlot()
+        { }
     }
 }

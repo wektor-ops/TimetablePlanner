@@ -17,376 +17,218 @@ namespace TimetablePlanner
         public static int penalty_RoomsUse = 4;
 
 
-        public static void OutputTimetableofClass(Schoolclass schoolClass)
+        public static void OutputTimetable(Schoolclass schoolClass)
         {
-
             Console.WriteLine("╔════════╦════════════════╦════════════════╦════════════════╦════════════════╦════════════════╗");
-            Console.WriteLine("║  Zeit  ║       Mo       ║       Di       ║       Mi       ║       Do       ║       Fr       ║");
+            Console.WriteLine("║  Zeit  ║      Mo        ║      Di        ║      Mi        ║      Do        ║      Fr        ║");
             Console.WriteLine("╠════════╬════════════════╬════════════════╬════════════════╬════════════════╬════════════════╣");
 
-            // 08:00
-            Console.WriteLine("║ 08:00  ║ " + schoolClass.ClassPlan[0, 0].assignedSubject.Abbreviation + " " + schoolClass.ClassPlan[0, 0].assignedTeacher.Abbreviation + " ║ " +
-                                                    schoolClass.ClassPlan[1, 0].assignedSubject.Abbreviation + " " + schoolClass.ClassPlan[1, 0].assignedTeacher.Abbreviation + " ║ " +
-                                                    schoolClass.ClassPlan[2, 0].assignedSubject.Abbreviation + " " + schoolClass.ClassPlan[2, 0].assignedTeacher.Abbreviation + " ║ " +
-                                                    schoolClass.ClassPlan[3, 0].assignedSubject.Abbreviation + " " + schoolClass.ClassPlan[3, 0].assignedTeacher.Abbreviation + " ║ " +
-                                                    schoolClass.ClassPlan[4, 0].assignedSubject.Abbreviation + " " + schoolClass.ClassPlan[4, 0].assignedTeacher.Abbreviation + " ║");
-            Console.WriteLine("║        ║ " + schoolClass.Abbreviation + " " + schoolClass.ClassPlan[0, 0].assignedRoom.Abbreviation + " ║ " +
-                                                    schoolClass.Abbreviation + " " + schoolClass.ClassPlan[1, 0].assignedRoom.Abbreviation + " ║ " +
-                                                    schoolClass.Abbreviation + " " + schoolClass.ClassPlan[2, 0].assignedRoom.Abbreviation + " ║ " +
-                                                    schoolClass.Abbreviation + " " + schoolClass.ClassPlan[3, 0].assignedRoom.Abbreviation + " ║ " +
-                                                    schoolClass.Abbreviation + " " + schoolClass.ClassPlan[4, 0].assignedRoom.Abbreviation + " ║");
+            string[] times = { "08:00 ", "09:00 ", "10:00 ", "11:00 ", "12:00 ", "14:00 ", "15:00 ", "16:00 ", "17:00 ", "18:00 " };
 
-            // 09:00
-            Console.WriteLine("╠════════╬════════════════╬════════════════╬════════════════╬════════════════╬════════════════╣");
-            Console.WriteLine("║ 09:00  ║ " + schoolClass.ClassPlan[0, 1].assignedSubject.Abbreviation + " " + schoolClass.ClassPlan[0, 1].assignedTeacher.Abbreviation + " ║ " +
-                                                    schoolClass.ClassPlan[1, 1].assignedSubject.Abbreviation + " " + schoolClass.ClassPlan[1, 1].assignedTeacher.Abbreviation + " ║ " +
-                                                    schoolClass.ClassPlan[2, 1].assignedSubject.Abbreviation + " " + schoolClass.ClassPlan[2, 1].assignedTeacher.Abbreviation + " ║ " +
-                                                    schoolClass.ClassPlan[3, 1].assignedSubject.Abbreviation + " " + schoolClass.ClassPlan[3, 1].assignedTeacher.Abbreviation + " ║ " +
-                                                    schoolClass.ClassPlan[4, 1].assignedSubject.Abbreviation + " " + schoolClass.ClassPlan[4, 1].assignedTeacher.Abbreviation + " ║");
-            Console.WriteLine("║        ║ " + schoolClass.Abbreviation + " " + schoolClass.ClassPlan[0, 1].assignedRoom.Abbreviation + " ║ " +
-                                                    schoolClass.Abbreviation + " " + schoolClass.ClassPlan[1, 1].assignedRoom.Abbreviation + " ║ " +
-                                                    schoolClass.Abbreviation + " " + schoolClass.ClassPlan[2, 1].assignedRoom.Abbreviation + " ║ " +
-                                                    schoolClass.Abbreviation + " " + schoolClass.ClassPlan[3, 1].assignedRoom.Abbreviation + " ║ " +
-                                                    schoolClass.Abbreviation + " " + schoolClass.ClassPlan[4, 1].assignedRoom.Abbreviation + " ║");
+            for (int stunde = 0; stunde < 9; stunde++)
+            {
+                if (stunde == 5)
+                {
+                    Console.WriteLine("║ 13:00  ║                ║                ║                ║                ║                ║");
+                    Console.WriteLine("║        ║                ║                ║                ║                ║                ║");
+                    Console.WriteLine("╠════════╬════════════════╬════════════════╬════════════════╬════════════════╬════════════════╣");
+                    continue;
+                }
 
-            // 10:00
-            Console.WriteLine("╠════════╬════════════════╬════════════════╬════════════════╬════════════════╬════════════════╣");
-            Console.WriteLine("║ 10:00  ║ " + schoolClass.ClassPlan[0, 2].assignedSubject.Abbreviation + " " + schoolClass.ClassPlan[0, 2].assignedTeacher.Abbreviation + " ║ " +
-                                                    schoolClass.ClassPlan[1, 2].assignedSubject.Abbreviation + " " + schoolClass.ClassPlan[1, 2].assignedTeacher.Abbreviation + " ║ " +
-                                                    schoolClass.ClassPlan[2, 2].assignedSubject.Abbreviation + " " + schoolClass.ClassPlan[2, 2].assignedTeacher.Abbreviation + " ║ " +
-                                                    schoolClass.ClassPlan[3, 2].assignedSubject.Abbreviation + " " + schoolClass.ClassPlan[3, 2].assignedTeacher.Abbreviation + " ║ " +
-                                                    schoolClass.ClassPlan[4, 2].assignedSubject.Abbreviation + " " + schoolClass.ClassPlan[4, 2].assignedTeacher.Abbreviation + " ║");
-            Console.WriteLine("║        ║ " + schoolClass.Abbreviation + " " + schoolClass.ClassPlan[0, 2].assignedRoom.Abbreviation + " ║ " +
-                                                    schoolClass.Abbreviation + " " + schoolClass.ClassPlan[1, 2].assignedRoom.Abbreviation + " ║ " +
-                                                    schoolClass.Abbreviation + " " + schoolClass.ClassPlan[2, 2].assignedRoom.Abbreviation + " ║ " +
-                                                    schoolClass.Abbreviation + " " + schoolClass.ClassPlan[3, 2].assignedRoom.Abbreviation + " ║ " +
-                                                    schoolClass.Abbreviation + " " + schoolClass.ClassPlan[4, 2].assignedRoom.Abbreviation + " ║");
+                int planStunde = stunde < 5 ? stunde : stunde - 1;
 
-            // 11:00
-            Console.WriteLine("╠════════╬════════════════╬════════════════╬════════════════╬════════════════╬════════════════╣");
-            Console.WriteLine("║ 11:00  ║ " + schoolClass.ClassPlan[0, 3].assignedSubject.Abbreviation + " " + schoolClass.ClassPlan[0, 3].assignedTeacher.Abbreviation + " ║ " +
-                                                    schoolClass.ClassPlan[1, 3].assignedSubject.Abbreviation + " " + schoolClass.ClassPlan[1, 3].assignedTeacher.Abbreviation + " ║ " +
-                                                    schoolClass.ClassPlan[2, 3].assignedSubject.Abbreviation + " " + schoolClass.ClassPlan[2, 3].assignedTeacher.Abbreviation + " ║ " +
-                                                    schoolClass.ClassPlan[3, 3].assignedSubject.Abbreviation + " " + schoolClass.ClassPlan[3, 3].assignedTeacher.Abbreviation + " ║ " +
-                                                    schoolClass.ClassPlan[4, 3].assignedSubject.Abbreviation + " " + schoolClass.ClassPlan[4, 3].assignedTeacher.Abbreviation + " ║");
-            Console.WriteLine("║        ║ " + schoolClass.Abbreviation + " " + schoolClass.ClassPlan[0, 3].assignedRoom.Abbreviation + " ║ " +
-                                                    schoolClass.Abbreviation + " " + schoolClass.ClassPlan[1, 3].assignedRoom.Abbreviation + " ║ " +
-                                                    schoolClass.Abbreviation + " " + schoolClass.ClassPlan[2, 3].assignedRoom.Abbreviation + " ║ " +
-                                                    schoolClass.Abbreviation + " " + schoolClass.ClassPlan[3, 3].assignedRoom.Abbreviation + " ║ " +
-                                                    schoolClass.Abbreviation + " " + schoolClass.ClassPlan[4, 3].assignedRoom.Abbreviation + " ║");
+                Console.Write($"║ {times[stunde]} ║");
+                for (int tag = 0; tag < 5; tag++)
+                {
+                    TimetableSlot entry = schoolClass.ClassPlan[tag, planStunde];
 
-            // 12:00
-            Console.WriteLine("╠════════╬════════════════╬════════════════╬════════════════╬════════════════╬════════════════╣");
-            Console.WriteLine("║ 12:00  ║ " + schoolClass.ClassPlan[0, 4].assignedSubject.Abbreviation + " " + schoolClass.ClassPlan[0, 4].assignedTeacher.Abbreviation + " ║ " +
-                                                    schoolClass.ClassPlan[1, 4].assignedSubject.Abbreviation + " " + schoolClass.ClassPlan[1, 4].assignedTeacher.Abbreviation + " ║ " +
-                                                    schoolClass.ClassPlan[2, 4].assignedSubject.Abbreviation + " " + schoolClass.ClassPlan[2, 4].assignedTeacher.Abbreviation + " ║ " +
-                                                    schoolClass.ClassPlan[3, 4].assignedSubject.Abbreviation + " " + schoolClass.ClassPlan[3, 4].assignedTeacher.Abbreviation + " ║ " +
-                                                    schoolClass.ClassPlan[4, 4].assignedSubject.Abbreviation + " " + schoolClass.ClassPlan[4, 4].assignedTeacher.Abbreviation + " ║");
-            Console.WriteLine("║        ║ " + schoolClass.Abbreviation + " " + schoolClass.ClassPlan[0, 4].assignedRoom.Abbreviation + " ║ " +
-                                                    schoolClass.Abbreviation + " " + schoolClass.ClassPlan[1, 4].assignedRoom.Abbreviation + " ║ " +
-                                                    schoolClass.Abbreviation + " " + schoolClass.ClassPlan[2, 4].assignedRoom.Abbreviation + " ║ " +
-                                                    schoolClass.Abbreviation + " " + schoolClass.ClassPlan[3, 4].assignedRoom.Abbreviation + " ║ " +
-                                                    schoolClass.Abbreviation + " " + schoolClass.ClassPlan[4, 4].assignedRoom.Abbreviation + " ║");
+                    string subjectAbbr = entry?.assignedSubject?.Abbreviation ?? "  ";
+                    string teacherAbbr = entry?.assignedTeacher?.Abbreviation ?? "   ";
 
-            // 13:00 (Pause)
-            Console.WriteLine("╠════════╬════════════════╬════════════════╬════════════════╬════════════════╬════════════════╣");
-            Console.WriteLine("║ 13:00  ║                ║                ║                ║                ║                ║");
-            Console.WriteLine("║        ║                ║                ║                ║                ║                ║");
+                    string output = $" {subjectAbbr}         {teacherAbbr} ";
 
-            // 14:00
-            Console.WriteLine("╠════════╬════════════════╬════════════════╬════════════════╬════════════════╬════════════════╣");
-            Console.WriteLine("║ 14:00  ║ " + schoolClass.ClassPlan[0, 5].assignedSubject.Abbreviation + " " + schoolClass.ClassPlan[0, 5].assignedTeacher.Abbreviation + " ║ " +
-                                                    schoolClass.ClassPlan[1, 5].assignedSubject.Abbreviation + " " + schoolClass.ClassPlan[1, 5].assignedTeacher.Abbreviation + " ║ " +
-                                                    schoolClass.ClassPlan[2, 5].assignedSubject.Abbreviation + " " + schoolClass.ClassPlan[2, 5].assignedTeacher.Abbreviation + " ║ " +
-                                                    schoolClass.ClassPlan[3, 5].assignedSubject.Abbreviation + " " + schoolClass.ClassPlan[3, 5].assignedTeacher.Abbreviation + " ║ " +
-                                                    schoolClass.ClassPlan[4, 5].assignedSubject.Abbreviation + " " + schoolClass.ClassPlan[4, 5].assignedTeacher.Abbreviation + " ║");
-            Console.WriteLine("║        ║ " + schoolClass.Abbreviation + " " + schoolClass.ClassPlan[0, 5].assignedRoom.Abbreviation + " ║ " +
-                                                    schoolClass.Abbreviation + " " + schoolClass.ClassPlan[1, 5].assignedRoom.Abbreviation + " ║ " +
-                                                    schoolClass.Abbreviation + " " + schoolClass.ClassPlan[2, 5].assignedRoom.Abbreviation + " ║ " +
-                                                    schoolClass.Abbreviation + " " + schoolClass.ClassPlan[3, 5].assignedRoom.Abbreviation + " ║ " +
-                                                    schoolClass.Abbreviation + " " + schoolClass.ClassPlan[4, 5].assignedRoom.Abbreviation + " ║");
+                    Console.Write($"{output}║");
 
-            // 15:00
-            Console.WriteLine("╠════════╬════════════════╬════════════════╬════════════════╬════════════════╬════════════════╣");
-            Console.WriteLine("║ 15:00  ║ " + schoolClass.ClassPlan[0, 6].assignedSubject.Abbreviation + " " + schoolClass.ClassPlan[0, 6].assignedTeacher.Abbreviation + " ║ " +
-                                                    schoolClass.ClassPlan[1, 6].assignedSubject.Abbreviation + " " + schoolClass.ClassPlan[1, 6].assignedTeacher.Abbreviation + " ║ " +
-                                                    schoolClass.ClassPlan[2, 6].assignedSubject.Abbreviation + " " + schoolClass.ClassPlan[2, 6].assignedTeacher.Abbreviation + " ║ " +
-                                                    schoolClass.ClassPlan[3, 6].assignedSubject.Abbreviation + " " + schoolClass.ClassPlan[3, 6].assignedTeacher.Abbreviation + " ║ " +
-                                                    schoolClass.ClassPlan[4, 6].assignedSubject.Abbreviation + " " + schoolClass.ClassPlan[4, 6].assignedTeacher.Abbreviation + " ║");
-            Console.WriteLine("║        ║ " + schoolClass.Abbreviation + " " + schoolClass.ClassPlan[0, 6].assignedRoom.Abbreviation + " ║ " +
-                                                    schoolClass.Abbreviation + " " + schoolClass.ClassPlan[1, 6].assignedRoom.Abbreviation + " ║ " +
-                                                    schoolClass.Abbreviation + " " + schoolClass.ClassPlan[2, 6].assignedRoom.Abbreviation + " ║ " +
-                                                    schoolClass.Abbreviation + " " + schoolClass.ClassPlan[3, 6].assignedRoom.Abbreviation + " ║ " +
-                                                    schoolClass.Abbreviation + " " + schoolClass.ClassPlan[4, 6].assignedRoom.Abbreviation + " ║");
+                    if (tag == 4)
+                    {
+                        Console.WriteLine();
+                    }
+                }
 
-            // 16:00
-            Console.WriteLine("╠════════╬════════════════╬════════════════╬════════════════╬════════════════╬════════════════╣");
-            Console.WriteLine("║ 16:00  ║ " + schoolClass.ClassPlan[0, 7].assignedSubject.Abbreviation + " " + schoolClass.ClassPlan[0, 7].assignedTeacher.Abbreviation + " ║ " +
-                                                    schoolClass.ClassPlan[1, 7].assignedSubject.Abbreviation + " " + schoolClass.ClassPlan[1, 7].assignedTeacher.Abbreviation + " ║ " +
-                                                    schoolClass.ClassPlan[2, 7].assignedSubject.Abbreviation + " " + schoolClass.ClassPlan[2, 7].assignedTeacher.Abbreviation + " ║ " +
-                                                    schoolClass.ClassPlan[3, 7].assignedSubject.Abbreviation + " " + schoolClass.ClassPlan[3, 7].assignedTeacher.Abbreviation + " ║ " +
-                                                    schoolClass.ClassPlan[4, 7].assignedSubject.Abbreviation + " " + schoolClass.ClassPlan[4, 7].assignedTeacher.Abbreviation + " ║");
-            Console.WriteLine("║        ║ " + schoolClass.Abbreviation + " " + schoolClass.ClassPlan[0, 7].assignedRoom.Abbreviation + " ║ " +
-                                                    schoolClass.Abbreviation + " " + schoolClass.ClassPlan[1, 7].assignedRoom.Abbreviation + " ║ " +
-                                                    schoolClass.Abbreviation + " " + schoolClass.ClassPlan[2, 7].assignedRoom.Abbreviation + " ║ " +
-                                                    schoolClass.Abbreviation + " " + schoolClass.ClassPlan[3, 7].assignedRoom.Abbreviation + " ║ " +
-                                                    schoolClass.Abbreviation + " " + schoolClass.ClassPlan[4, 7].assignedRoom.Abbreviation + " ║");
+                Console.Write("║        ║");
+                for (int tag = 0; tag < 5; tag++)
+                {
+                    TimetableSlot entry = schoolClass.ClassPlan[tag, planStunde];
+                    string classAbbr;
+                    if(entry != null)
+                    classAbbr = schoolClass.Abbreviation;
+                    else classAbbr = "    ";
+                    // Raum: 4 Zeichen
+                    string roomAbbr = entry?.assignedRoom?.Abbreviation ?? "    ";
 
-            // 17:00
-            Console.WriteLine("╠════════╬════════════════╬════════════════╬════════════════╬════════════════╬════════════════╣");
-            Console.WriteLine("║ 17:00  ║ " + schoolClass.ClassPlan[0, 8].assignedSubject.Abbreviation + " " + schoolClass.ClassPlan[0, 8].assignedTeacher.Abbreviation + " ║ " +
-                                                    schoolClass.ClassPlan[1, 8].assignedSubject.Abbreviation + " " + schoolClass.ClassPlan[1, 8].assignedTeacher.Abbreviation + " ║ " +
-                                                    schoolClass.ClassPlan[2, 8].assignedSubject.Abbreviation + " " + schoolClass.ClassPlan[2, 8].assignedTeacher.Abbreviation + " ║ " +
-                                                    schoolClass.ClassPlan[3, 8].assignedSubject.Abbreviation + " " + schoolClass.ClassPlan[3, 8].assignedTeacher.Abbreviation + " ║ " +
-                                                    schoolClass.ClassPlan[4, 8].assignedSubject.Abbreviation + " " + schoolClass.ClassPlan[4, 8].assignedTeacher.Abbreviation + " ║");
-            Console.WriteLine("║        ║ " + schoolClass.Abbreviation + " " + schoolClass.ClassPlan[0, 8].assignedRoom.Abbreviation + " ║ " +
-                                                    schoolClass.Abbreviation + " " + schoolClass.ClassPlan[1, 8].assignedRoom.Abbreviation + " ║ " +
-                                                    schoolClass.Abbreviation + " " + schoolClass.ClassPlan[2, 8].assignedRoom.Abbreviation + " ║ " +
-                                                    schoolClass.Abbreviation + " " + schoolClass.ClassPlan[3, 8].assignedRoom.Abbreviation + " ║ " +
-                                                    schoolClass.Abbreviation + " " + schoolClass.ClassPlan[4, 8].assignedRoom.Abbreviation + " ║");
+                    string output = $" {classAbbr}      {roomAbbr} ";
 
-            // 18:00
-            Console.WriteLine("╠════════╬════════════════╬════════════════╬════════════════╬════════════════╬════════════════╣");
-            Console.WriteLine("║ 18:00  ║ " + schoolClass.ClassPlan[0, 9].assignedSubject.Abbreviation + " " + schoolClass.ClassPlan[0, 9].assignedTeacher.Abbreviation + " ║ " +
-                                                    schoolClass.ClassPlan[1, 9].assignedSubject.Abbreviation + " " + schoolClass.ClassPlan[1, 9].assignedTeacher.Abbreviation + " ║ " +
-                                                    schoolClass.ClassPlan[2, 9].assignedSubject.Abbreviation + " " + schoolClass.ClassPlan[2, 9].assignedTeacher.Abbreviation + " ║ " +
-                                                    schoolClass.ClassPlan[3, 9].assignedSubject.Abbreviation + " " + schoolClass.ClassPlan[3, 9].assignedTeacher.Abbreviation + " ║ " +
-                                                    schoolClass.ClassPlan[4, 9].assignedSubject.Abbreviation + " " + schoolClass.ClassPlan[4, 9].assignedTeacher.Abbreviation + " ║");
-            Console.WriteLine("║        ║ " + schoolClass.Abbreviation + " " + schoolClass.ClassPlan[0, 9].assignedRoom.Abbreviation + " ║ " +
-                                                    schoolClass.Abbreviation + " " + schoolClass.ClassPlan[1, 9].assignedRoom.Abbreviation + " ║ " +
-                                                    schoolClass.Abbreviation + " " + schoolClass.ClassPlan[2, 9].assignedRoom.Abbreviation + " ║ " +
-                                                    schoolClass.Abbreviation + " " + schoolClass.ClassPlan[3, 9].assignedRoom.Abbreviation + " ║ " +
-                                                    schoolClass.Abbreviation + " " + schoolClass.ClassPlan[4, 9].assignedRoom.Abbreviation + " ║");
+                    Console.Write($"{output}║");
+
+                    if (tag == 4)
+                    {
+                        Console.WriteLine();
+                    }
+                }
+
+                if (stunde < 9 && stunde != 8)
+                {
+                    Console.WriteLine("╠════════╬════════════════╬════════════════╬════════════════╬════════════════╬════════════════╣");
+                }
+            }
 
             Console.WriteLine("╚════════╩════════════════╩════════════════╩════════════════╩════════════════╩════════════════╝");
-
-
-
-
         }
-        public static void OutputTimetableofTeacher(Teacher teacher)
+
+        public static void OutputTimetable(Teacher teacher)
         {
-
             Console.WriteLine("╔════════╦════════════════╦════════════════╦════════════════╦════════════════╦════════════════╗");
-            Console.WriteLine("║  Zeit  ║       Mo       ║       Di       ║       Mi       ║       Do       ║       Fr       ║");
+            Console.WriteLine("║  Zeit  ║      Mo        ║      Di        ║      Mi        ║      Do        ║      Fr        ║");
             Console.WriteLine("╠════════╬════════════════╬════════════════╬════════════════╬════════════════╬════════════════╣");
 
-            // 08:00
-            Console.WriteLine("║ 08:00  ║ " + teacher.TeacherPlan[0, 0].assignedSubject.Abbreviation + " " + teacher.TeacherPlan[0, 0].assignedTeacher.Abbreviation + " ║ " +
-                                               teacher.TeacherPlan[1, 0].assignedSubject.Abbreviation + " " + teacher.TeacherPlan[1, 0].assignedTeacher.Abbreviation + " ║ " +
-                                               teacher.TeacherPlan[2, 0].assignedSubject.Abbreviation + " " + teacher.TeacherPlan[2, 0].assignedTeacher.Abbreviation + " ║ " +
-                                               teacher.TeacherPlan[3, 0].assignedSubject.Abbreviation + " " + teacher.TeacherPlan[3, 0].assignedTeacher.Abbreviation + " ║ " +
-                                               teacher.TeacherPlan[4, 0].assignedSubject.Abbreviation + " " + teacher.TeacherPlan[4, 0].assignedTeacher.Abbreviation + " ║");
-            Console.WriteLine("║        ║ " + teacher.Abbreviation + " " + teacher.TeacherPlan[0, 0].assignedRoom.Abbreviation + " ║ " +
-                                               teacher.Abbreviation + " " + teacher.TeacherPlan[1, 0].assignedRoom.Abbreviation + " ║ " +
-                                               teacher.Abbreviation + " " + teacher.TeacherPlan[2, 0].assignedRoom.Abbreviation + " ║ " +
-                                               teacher.Abbreviation + " " + teacher.TeacherPlan[3, 0].assignedRoom.Abbreviation + " ║ " +
-                                               teacher.Abbreviation + " " + teacher.TeacherPlan[4, 0].assignedRoom.Abbreviation + " ║");
+            string[] times = { "08:00 ", "09:00 ", "10:00 ", "11:00 ", "12:00 ", "14:00 ", "15:00 ", "16:00 ", "17:00 ", "18:00 " };
 
-            // 09:00
-            Console.WriteLine("╠════════╬════════════════╬════════════════╬════════════════╬════════════════╬════════════════╣");
-            Console.WriteLine("║ 09:00  ║ " + teacher.TeacherPlan[0, 1].assignedSubject.Abbreviation + " " + teacher.TeacherPlan[0, 1].assignedTeacher.Abbreviation + " ║ " +
-                                               teacher.TeacherPlan[1, 1].assignedSubject.Abbreviation + " " + teacher.TeacherPlan[1, 1].assignedTeacher.Abbreviation + " ║ " +
-                                               teacher.TeacherPlan[2, 1].assignedSubject.Abbreviation + " " + teacher.TeacherPlan[2, 1].assignedTeacher.Abbreviation + " ║ " +
-                                               teacher.TeacherPlan[3, 1].assignedSubject.Abbreviation + " " + teacher.TeacherPlan[3, 1].assignedTeacher.Abbreviation + " ║ " +
-                                               teacher.TeacherPlan[4, 1].assignedSubject.Abbreviation + " " + teacher.TeacherPlan[4, 1].assignedTeacher.Abbreviation + " ║");
-            Console.WriteLine("║        ║ " + teacher.Abbreviation + " " + teacher.TeacherPlan[0, 1].assignedRoom.Abbreviation + " ║ " +
-                                               teacher.Abbreviation + " " + teacher.TeacherPlan[1, 1].assignedRoom.Abbreviation + " ║ " +
-                                               teacher.Abbreviation + " " + teacher.TeacherPlan[2, 1].assignedRoom.Abbreviation + " ║ " +
-                                               teacher.Abbreviation + " " + teacher.TeacherPlan[3, 1].assignedRoom.Abbreviation + " ║ " +
-                                               teacher.Abbreviation + " " + teacher.TeacherPlan[4, 1].assignedRoom.Abbreviation + " ║");
+            for (int stunde = 0; stunde < 9; stunde++)
+            {
+                if (stunde == 5)
+                {
+                    Console.WriteLine("║ 13:00  ║                ║                ║                ║                ║                ║");
+                    Console.WriteLine("║        ║                ║                ║                ║                ║                ║");
+                    Console.WriteLine("╠════════╬════════════════╬════════════════╬════════════════╬════════════════╬════════════════╣");
+                    continue;
+                }
 
-            // 10:00
-            Console.WriteLine("╠════════╬════════════════╬════════════════╬════════════════╬════════════════╬════════════════╣");
-            Console.WriteLine("║ 10:00  ║ " + teacher.TeacherPlan[0, 2].assignedSubject.Abbreviation + " " + teacher.TeacherPlan[0, 2].assignedTeacher.Abbreviation + " ║ " +
-                                               teacher.TeacherPlan[1, 2].assignedSubject.Abbreviation + " " + teacher.TeacherPlan[1, 2].assignedTeacher.Abbreviation + " ║ " +
-                                               teacher.TeacherPlan[2, 2].assignedSubject.Abbreviation + " " + teacher.TeacherPlan[2, 2].assignedTeacher.Abbreviation + " ║ " +
-                                               teacher.TeacherPlan[3, 2].assignedSubject.Abbreviation + " " + teacher.TeacherPlan[3, 2].assignedTeacher.Abbreviation + " ║ " +
-                                               teacher.TeacherPlan[4, 2].assignedSubject.Abbreviation + " " + teacher.TeacherPlan[4, 2].assignedTeacher.Abbreviation + " ║");
-            Console.WriteLine("║        ║ " + teacher.Abbreviation + " " + teacher.TeacherPlan[0, 2].assignedRoom.Abbreviation + " ║ " +
-                                               teacher.Abbreviation + " " + teacher.TeacherPlan[1, 2].assignedRoom.Abbreviation + " ║ " +
-                                               teacher.Abbreviation + " " + teacher.TeacherPlan[2, 2].assignedRoom.Abbreviation + " ║ " +
-                                               teacher.Abbreviation + " " + teacher.TeacherPlan[3, 2].assignedRoom.Abbreviation + " ║ " +
-                                               teacher.Abbreviation + " " + teacher.TeacherPlan[4, 2].assignedRoom.Abbreviation + " ║");
+                int planStunde = stunde < 5 ? stunde : stunde - 1;
 
-            // 11:00
-            Console.WriteLine("╠════════╬════════════════╬════════════════╬════════════════╬════════════════╬════════════════╣");
-            Console.WriteLine("║ 11:00  ║ " + teacher.TeacherPlan[0, 3].assignedSubject.Abbreviation + " " + teacher.TeacherPlan[0, 3].assignedTeacher.Abbreviation + " ║ " +
-                                               teacher.TeacherPlan[1, 3].assignedSubject.Abbreviation + " " + teacher.TeacherPlan[1, 3].assignedTeacher.Abbreviation + " ║ " +
-                                               teacher.TeacherPlan[2, 3].assignedSubject.Abbreviation + " " + teacher.TeacherPlan[2, 3].assignedTeacher.Abbreviation + " ║ " +
-                                               teacher.TeacherPlan[3, 3].assignedSubject.Abbreviation + " " + teacher.TeacherPlan[3, 3].assignedTeacher.Abbreviation + " ║ " +
-                                               teacher.TeacherPlan[4, 3].assignedSubject.Abbreviation + " " + teacher.TeacherPlan[4, 3].assignedTeacher.Abbreviation + " ║");
-            Console.WriteLine("║        ║ " + teacher.Abbreviation + " " + teacher.TeacherPlan[0, 3].assignedRoom.Abbreviation + " ║ " +
-                                               teacher.Abbreviation + " " + teacher.TeacherPlan[1, 3].assignedRoom.Abbreviation + " ║ " +
-                                               teacher.Abbreviation + " " + teacher.TeacherPlan[2, 3].assignedRoom.Abbreviation + " ║ " +
-                                               teacher.Abbreviation + " " + teacher.TeacherPlan[3, 3].assignedRoom.Abbreviation + " ║ " +
-                                               teacher.Abbreviation + " " + teacher.TeacherPlan[4, 3].assignedRoom.Abbreviation + " ║");
+                Console.Write($"║ {times[stunde]} ║");
+                for (int tag = 0; tag < 5; tag++)
+                {
+                    TimetableSlot entry = teacher.TeacherPlan[tag, planStunde];
 
-            // 12:00
-            Console.WriteLine("╠════════╬════════════════╬════════════════╬════════════════╬════════════════╬════════════════╣");
-            Console.WriteLine("║ 12:00  ║ " + teacher.TeacherPlan[0, 4].assignedSubject.Abbreviation + " " + teacher.TeacherPlan[0, 4].assignedTeacher.Abbreviation + " ║ " +
-                                               teacher.TeacherPlan[1, 4].assignedSubject.Abbreviation + " " + teacher.TeacherPlan[1, 4].assignedTeacher.Abbreviation + " ║ " +
-                                               teacher.TeacherPlan[2, 4].assignedSubject.Abbreviation + " " + teacher.TeacherPlan[2, 4].assignedTeacher.Abbreviation + " ║ " +
-                                               teacher.TeacherPlan[3, 4].assignedSubject.Abbreviation + " " + teacher.TeacherPlan[3, 4].assignedTeacher.Abbreviation + " ║ " +
-                                               teacher.TeacherPlan[4, 4].assignedSubject.Abbreviation + " " + teacher.TeacherPlan[4, 4].assignedTeacher.Abbreviation + " ║");
-            Console.WriteLine("║        ║ " + teacher.Abbreviation + " " + teacher.TeacherPlan[0, 4].assignedRoom.Abbreviation + " ║ " +
-                                               teacher.Abbreviation + " " + teacher.TeacherPlan[1, 4].assignedRoom.Abbreviation + " ║ " +
-                                               teacher.Abbreviation + " " + teacher.TeacherPlan[2, 4].assignedRoom.Abbreviation + " ║ " +
-                                               teacher.Abbreviation + " " + teacher.TeacherPlan[3, 4].assignedRoom.Abbreviation + " ║ " +
-                                               teacher.Abbreviation + " " + teacher.TeacherPlan[4, 4].assignedRoom.Abbreviation + " ║");
+                    string subjectAbbr = entry?.assignedSubject?.Abbreviation ?? "  ";
+                    string classAbbr = entry?.assignedSchoolclass?.Abbreviation ?? "    ";
 
-            // 13:00 (Pause)
-            Console.WriteLine("╠════════╬════════════════╬════════════════╬════════════════╬════════════════╬════════════════╣");
-            Console.WriteLine("║ 13:00  ║                ║                ║                ║                ║                ║");
-            Console.WriteLine("║        ║                ║                ║                ║                ║                ║");
+                    string output = $" {subjectAbbr}        {classAbbr} ";
 
-            // 14:00
-            Console.WriteLine("╠════════╬════════════════╬════════════════╬════════════════╬════════════════╬════════════════╣");
-            Console.WriteLine("║ 14:00  ║ " + teacher.TeacherPlan[0, 5].assignedSubject.Abbreviation + " " + teacher.TeacherPlan[0, 5].assignedTeacher.Abbreviation + " ║ " +
-                                               teacher.TeacherPlan[1, 5].assignedSubject.Abbreviation + " " + teacher.TeacherPlan[1, 5].assignedTeacher.Abbreviation + " ║ " +
-                                               teacher.TeacherPlan[2, 5].assignedSubject.Abbreviation + " " + teacher.TeacherPlan[2, 5].assignedTeacher.Abbreviation + " ║ " +
-                                               teacher.TeacherPlan[3, 5].assignedSubject.Abbreviation + " " + teacher.TeacherPlan[3, 5].assignedTeacher.Abbreviation + " ║ " +
-                                               teacher.TeacherPlan[4, 5].assignedSubject.Abbreviation + " " + teacher.TeacherPlan[4, 5].assignedTeacher.Abbreviation + " ║");
-            Console.WriteLine("║        ║ " + teacher.Abbreviation + " " + teacher.TeacherPlan[0, 5].assignedRoom.Abbreviation + " ║ " +
-                                               teacher.Abbreviation + " " + teacher.TeacherPlan[1, 5].assignedRoom.Abbreviation + " ║ " +
-                                               teacher.Abbreviation + " " + teacher.TeacherPlan[2, 5].assignedRoom.Abbreviation + " ║ " +
-                                               teacher.Abbreviation + " " + teacher.TeacherPlan[3, 5].assignedRoom.Abbreviation + " ║ " +
-                                               teacher.Abbreviation + " " + teacher.TeacherPlan[4, 5].assignedRoom.Abbreviation + " ║");
+                    Console.Write($"{output}║");
 
-            // 15:00
-            Console.WriteLine("╠════════╬════════════════╬════════════════╬════════════════╬════════════════╬════════════════╣");
-            Console.WriteLine("║ 15:00  ║ " + teacher.TeacherPlan[0, 6].assignedSubject.Abbreviation + " " + teacher.TeacherPlan[0, 6].assignedTeacher.Abbreviation + " ║ " +
-                                               teacher.TeacherPlan[1, 6].assignedSubject.Abbreviation + " " + teacher.TeacherPlan[1, 6].assignedTeacher.Abbreviation + " ║ " +
-                                               teacher.TeacherPlan[2, 6].assignedSubject.Abbreviation + " " + teacher.TeacherPlan[2, 6].assignedTeacher.Abbreviation + " ║ " +
-                                               teacher.TeacherPlan[3, 6].assignedSubject.Abbreviation + " " + teacher.TeacherPlan[3, 6].assignedTeacher.Abbreviation + " ║ " +
-                                               teacher.TeacherPlan[4, 6].assignedSubject.Abbreviation + " " + teacher.TeacherPlan[4, 6].assignedTeacher.Abbreviation + " ║");
-            Console.WriteLine("║        ║ " + teacher.Abbreviation + " " + teacher.TeacherPlan[0, 6].assignedRoom.Abbreviation + " ║ " +
-                                               teacher.Abbreviation + " " + teacher.TeacherPlan[1, 6].assignedRoom.Abbreviation + " ║ " +
-                                               teacher.Abbreviation + " " + teacher.TeacherPlan[2, 6].assignedRoom.Abbreviation + " ║ " +
-                                               teacher.Abbreviation + " " + teacher.TeacherPlan[3, 6].assignedRoom.Abbreviation + " ║ " +
-                                               teacher.Abbreviation + " " + teacher.TeacherPlan[4, 6].assignedRoom.Abbreviation + " ║");
+                    if (tag == 4)
+                    {
+                        Console.WriteLine();
+                    }
+                }
 
-            // 16:00
-            Console.WriteLine("╠════════╬════════════════╬════════════════╬════════════════╬════════════════╬════════════════╣");
-            Console.WriteLine("║ 16:00  ║ " + teacher.TeacherPlan[0, 7].assignedSubject.Abbreviation + " " + teacher.TeacherPlan[0, 7].assignedTeacher.Abbreviation + " ║ " +
-                                               teacher.TeacherPlan[1, 7].assignedSubject.Abbreviation + " " + teacher.TeacherPlan[1, 7].assignedTeacher.Abbreviation + " ║ " +
-                                               teacher.TeacherPlan[2, 7].assignedSubject.Abbreviation + " " + teacher.TeacherPlan[2, 7].assignedTeacher.Abbreviation + " ║ " +
-                                               teacher.TeacherPlan[3, 7].assignedSubject.Abbreviation + " " + teacher.TeacherPlan[3, 7].assignedTeacher.Abbreviation + " ║ " +
-                                               teacher.TeacherPlan[4, 7].assignedSubject.Abbreviation + " " + teacher.TeacherPlan[4, 7].assignedTeacher.Abbreviation + " ║");
-            Console.WriteLine("║        ║ " + teacher.Abbreviation + " " + teacher.TeacherPlan[0, 7].assignedRoom.Abbreviation + " ║ " +
-                                               teacher.Abbreviation + " " + teacher.TeacherPlan[1, 7].assignedRoom.Abbreviation + " ║ " +
-                                               teacher.Abbreviation + " " + teacher.TeacherPlan[2, 7].assignedRoom.Abbreviation + " ║ " +
-                                               teacher.Abbreviation + " " + teacher.TeacherPlan[3, 7].assignedRoom.Abbreviation + " ║ " +
-                                               teacher.Abbreviation + " " + teacher.TeacherPlan[4, 7].assignedRoom.Abbreviation + " ║");
+                Console.Write("║        ║");
+                for (int tag = 0; tag < 5; tag++)
+                {
+                    TimetableSlot entry = teacher.TeacherPlan[tag, planStunde];
+                    string teacherAbbr;
+                    if (entry != null)
+                        teacherAbbr = teacher.Abbreviation;
+                    else teacherAbbr = "   ";
+                        string roomAbbr = entry?.assignedRoom?.Abbreviation ?? "    ";
 
-            // 17:00
-            Console.WriteLine("╠════════╬════════════════╬════════════════╬════════════════╬════════════════╬════════════════╣");
-            Console.WriteLine("║ 17:00  ║ " + teacher.TeacherPlan[0, 8].assignedSubject.Abbreviation + " " + teacher.TeacherPlan[0, 8].assignedTeacher.Abbreviation + " ║ " +
-                                               teacher.TeacherPlan[1, 8].assignedSubject.Abbreviation + " " + teacher.TeacherPlan[1, 8].assignedTeacher.Abbreviation + " ║ " +
-                                               teacher.TeacherPlan[2, 8].assignedSubject.Abbreviation + " " + teacher.TeacherPlan[2, 8].assignedTeacher.Abbreviation + " ║ " +
-                                               teacher.TeacherPlan[3, 8].assignedSubject.Abbreviation + " " + teacher.TeacherPlan[3, 8].assignedTeacher.Abbreviation + " ║ " +
-                                               teacher.TeacherPlan[4, 8].assignedSubject.Abbreviation + " " + teacher.TeacherPlan[4, 8].assignedTeacher.Abbreviation + " ║");
-            Console.WriteLine("║        ║ " + teacher.Abbreviation + " " + teacher.TeacherPlan[0, 8].assignedRoom.Abbreviation + " ║ " +
-                                               teacher.Abbreviation + " " + teacher.TeacherPlan[1, 8].assignedRoom.Abbreviation + " ║ " +
-                                               teacher.Abbreviation + " " + teacher.TeacherPlan[2, 8].assignedRoom.Abbreviation + " ║ " +
-                                               teacher.Abbreviation + " " + teacher.TeacherPlan[3, 8].assignedRoom.Abbreviation + " ║ " +
-                                               teacher.Abbreviation + " " + teacher.TeacherPlan[4, 8].assignedRoom.Abbreviation + " ║");
+                    string output = $" {teacherAbbr}       {roomAbbr} ";
 
-            // 18:00
-            Console.WriteLine("╠════════╬════════════════╬════════════════╬════════════════╬════════════════╬════════════════╣");
-            Console.WriteLine("║ 18:00  ║ " + teacher.TeacherPlan[0, 9].assignedSubject.Abbreviation + " " + teacher.TeacherPlan[0, 9].assignedTeacher.Abbreviation + " ║ " +
-                                               teacher.TeacherPlan[1, 9].assignedSubject.Abbreviation + " " + teacher.TeacherPlan[1, 9].assignedTeacher.Abbreviation + " ║ " +
-                                               teacher.TeacherPlan[2, 9].assignedSubject.Abbreviation + " " + teacher.TeacherPlan[2, 9].assignedTeacher.Abbreviation + " ║ " +
-                                               teacher.TeacherPlan[3, 9].assignedSubject.Abbreviation + " " + teacher.TeacherPlan[3, 9].assignedTeacher.Abbreviation + " ║ " +
-                                               teacher.TeacherPlan[4, 9].assignedSubject.Abbreviation + " " + teacher.TeacherPlan[4, 9].assignedTeacher.Abbreviation + " ║");
-            Console.WriteLine("║        ║ " + teacher.Abbreviation + " " + teacher.TeacherPlan[0, 9].assignedRoom.Abbreviation + " ║ " +
-                                               teacher.Abbreviation + " " + teacher.TeacherPlan[1, 9].assignedRoom.Abbreviation + " ║ " +
-                                               teacher.Abbreviation + " " + teacher.TeacherPlan[2, 9].assignedRoom.Abbreviation + " ║ " +
-                                               teacher.Abbreviation + " " + teacher.TeacherPlan[3, 9].assignedRoom.Abbreviation + " ║ " +
-                                               teacher.Abbreviation + " " + teacher.TeacherPlan[4, 9].assignedRoom.Abbreviation + " ║");
+                    Console.Write($"{output}║");
+
+                    if (tag == 4)
+                    {
+                        Console.WriteLine();
+                    }
+                }
+
+                if (stunde < 9 && stunde != 8)
+                {
+                    Console.WriteLine("╠════════╬════════════════╬════════════════╬════════════════╬════════════════╬════════════════╣");
+                }
+            }
 
             Console.WriteLine("╚════════╩════════════════╩════════════════╩════════════════╩════════════════╩════════════════╝");
-
-
-
         }
 
-
-
-        public static void OutputTimetableofRoom(Room Room)
+        public static void OutputTimetable(Room room)
         {
-
             Console.WriteLine("╔════════╦════════════════╦════════════════╦════════════════╦════════════════╦════════════════╗");
-            Console.WriteLine("║ Zeit   ║ Mo             ║ Di             ║ Mi             ║ Do             ║ Fr             ║");
+            Console.WriteLine("║  Zeit  ║      Mo        ║      Di        ║      Mi        ║      Do        ║      Fr        ║");
             Console.WriteLine("╠════════╬════════════════╬════════════════╬════════════════╬════════════════╬════════════════╣");
 
-            // 08:00
-            Console.WriteLine("║ 08:00 ║ " + Room.RoomPlan[0, 0].assignedSubject.Abbreviation + " " + Room.RoomPlan[0, 0].assignedTeacher.Abbreviation + " ║ " + Room.RoomPlan[1, 0].assignedSubject.Abbreviation + " " + Room.RoomPlan[1, 0].assignedTeacher.Abbreviation + " ║ " + Room.RoomPlan[2, 0].assignedSubject.Abbreviation + " " + Room.RoomPlan[2, 0].assignedTeacher.Abbreviation + " ║ " + Room.RoomPlan[3, 0].assignedSubject.Abbreviation + " " + Room.RoomPlan[3, 0].assignedTeacher.Abbreviation + " ║ " + Room.RoomPlan[4, 0].assignedSubject.Abbreviation + " " + Room.RoomPlan[4, 0].assignedTeacher.Abbreviation + " ║");
-            Console.WriteLine("║      ║ " + Room.Abbreviation + " " + Room.RoomPlan[0, 0].assignedRoom.Abbreviation + " ║ " + Room.Abbreviation + " " + Room.RoomPlan[1, 0].assignedRoom.Abbreviation + " ║ " + Room.Abbreviation + " " + Room.RoomPlan[2, 0].assignedRoom.Abbreviation + " ║ " + Room.Abbreviation + " " + Room.RoomPlan[3, 0].assignedRoom.Abbreviation + " ║ " + Room.Abbreviation + " " + Room.RoomPlan[4, 0].assignedRoom.Abbreviation + " ║");
+            string[] times = { "08:00 ", "09:00 ", "10:00 ", "11:00 ", "12:00 ", "14:00 ", "15:00 ", "16:00 ", "17:00 ", "18:00 " };
 
-            // 09:00
-            Console.WriteLine("╠════════╬════════════════╬════════════════╬════════════════╬════════════════╬════════════════╣");
-            Console.WriteLine("║ 09:00 ║ " + Room.RoomPlan[0, 1].assignedSubject.Abbreviation + " " + Room.RoomPlan[0, 1].assignedTeacher.Abbreviation + " ║ " + Room.RoomPlan[1, 1].assignedSubject.Abbreviation + " " + Room.RoomPlan[1, 1].assignedTeacher.Abbreviation + " ║ " + Room.RoomPlan[2, 1].assignedSubject.Abbreviation + " " + Room.RoomPlan[2, 1].assignedTeacher.Abbreviation + " ║ " + Room.RoomPlan[3, 1].assignedSubject.Abbreviation + " " + Room.RoomPlan[3, 1].assignedTeacher.Abbreviation + " ║ " + Room.RoomPlan[4, 1].assignedSubject.Abbreviation + " " + Room.RoomPlan[4, 1].assignedTeacher.Abbreviation + " ║");
-            Console.WriteLine("║      ║ " + Room.Abbreviation + " " + Room.RoomPlan[0, 1].assignedRoom.Abbreviation + " ║ " + Room.Abbreviation + " " + Room.RoomPlan[1, 1].assignedRoom.Abbreviation + " ║ " + Room.Abbreviation + " " + Room.RoomPlan[2, 1].assignedRoom.Abbreviation + " ║ " + Room.Abbreviation + " " + Room.RoomPlan[3, 1].assignedRoom.Abbreviation + " ║ " + Room.Abbreviation + " " + Room.RoomPlan[4, 1].assignedRoom.Abbreviation + " ║");
+            for (int stunde = 0; stunde < 9; stunde++)
+            {
+                if (stunde == 5)
+                {
+                    Console.WriteLine("║ 13:00  ║                ║                ║                ║                ║                ║");
+                    Console.WriteLine("║        ║                ║                ║                ║                ║                ║");
+                    Console.WriteLine("╠════════╬════════════════╬════════════════╬════════════════╬════════════════╬════════════════╣");
+                    continue;
+                }
 
-            // 10:00
-            Console.WriteLine("╠════════╬════════════════╬════════════════╬════════════════╬════════════════╬════════════════╣");
-            Console.WriteLine("║ 10:00 ║ " + Room.RoomPlan[0, 2].assignedSubject.Abbreviation + " " + Room.RoomPlan[0, 2].assignedTeacher.Abbreviation + " ║ " + Room.RoomPlan[1, 2].assignedSubject.Abbreviation + " " + Room.RoomPlan[1, 2].assignedTeacher.Abbreviation + " ║ " + Room.RoomPlan[2, 2].assignedSubject.Abbreviation + " " + Room.RoomPlan[2, 2].assignedTeacher.Abbreviation + " ║ " + Room.RoomPlan[3, 2].assignedSubject.Abbreviation + " " + Room.RoomPlan[3, 2].assignedTeacher.Abbreviation + " ║ " + Room.RoomPlan[4, 2].assignedSubject.Abbreviation + " " + Room.RoomPlan[4, 2].assignedTeacher.Abbreviation + " ║");
-            Console.WriteLine("║      ║ " + Room.Abbreviation + " " + Room.RoomPlan[0, 2].assignedRoom.Abbreviation + " ║ " + Room.Abbreviation + " " + Room.RoomPlan[1, 2].assignedRoom.Abbreviation + " ║ " + Room.Abbreviation + " " + Room.RoomPlan[2, 2].assignedRoom.Abbreviation + " ║ " + Room.Abbreviation + " " + Room.RoomPlan[3, 2].assignedRoom.Abbreviation + " ║ " + Room.Abbreviation + " " + Room.RoomPlan[4, 2].assignedRoom.Abbreviation + " ║");
+                int planStunde = stunde < 5 ? stunde : stunde - 1;
 
-            // 11:00
-            Console.WriteLine("╠════════╬════════════════╬════════════════╬════════════════╬════════════════╬════════════════╣");
-            Console.WriteLine("║ 11:00 ║ " + Room.RoomPlan[0, 3].assignedSubject.Abbreviation + " " + Room.RoomPlan[0, 3].assignedTeacher.Abbreviation + " ║ " + Room.RoomPlan[1, 3].assignedSubject.Abbreviation + " " + Room.RoomPlan[1, 3].assignedTeacher.Abbreviation + " ║ " + Room.RoomPlan[2, 3].assignedSubject.Abbreviation + " " + Room.RoomPlan[2, 3].assignedTeacher.Abbreviation + " ║ " + Room.RoomPlan[3, 3].assignedSubject.Abbreviation + " " + Room.RoomPlan[3, 3].assignedTeacher.Abbreviation + " ║ " + Room.RoomPlan[4, 3].assignedSubject.Abbreviation + " " + Room.RoomPlan[4, 3].assignedTeacher.Abbreviation + " ║");
-            Console.WriteLine("║      ║ " + Room.Abbreviation + " " + Room.RoomPlan[0, 3].assignedRoom.Abbreviation + " ║ " + Room.Abbreviation + " " + Room.RoomPlan[1, 3].assignedRoom.Abbreviation + " ║ " + Room.Abbreviation + " " + Room.RoomPlan[2, 3].assignedRoom.Abbreviation + " ║ " + Room.Abbreviation + " " + Room.RoomPlan[3, 3].assignedRoom.Abbreviation + " ║ " + Room.Abbreviation + " " + Room.RoomPlan[4, 3].assignedRoom.Abbreviation + " ║");
+                Console.Write($"║ {times[stunde]} ║");
+                for (int tag = 0; tag < 5; tag++)
+                {
+                    TimetableSlot entry = room.RoomPlan[tag, planStunde];
 
-            // 12:00
-            Console.WriteLine("╠════════╬════════════════╬════════════════╬════════════════╬════════════════╬════════════════╣");
-            Console.WriteLine("║ 12:00 ║ " + Room.RoomPlan[0, 4].assignedSubject.Abbreviation + " " + Room.RoomPlan[0, 4].assignedTeacher.Abbreviation + " ║ " + Room.RoomPlan[1, 4].assignedSubject.Abbreviation + " " + Room.RoomPlan[1, 4].assignedTeacher.Abbreviation + " ║ " + Room.RoomPlan[2, 4].assignedSubject.Abbreviation + " " + Room.RoomPlan[2, 4].assignedTeacher.Abbreviation + " ║ " + Room.RoomPlan[3, 4].assignedSubject.Abbreviation + " " + Room.RoomPlan[3, 4].assignedTeacher.Abbreviation + " ║ " + Room.RoomPlan[4, 4].assignedSubject.Abbreviation + " " + Room.RoomPlan[4, 4].assignedTeacher.Abbreviation + " ║");
-            Console.WriteLine("║      ║ " + Room.Abbreviation + " " + Room.RoomPlan[0, 4].assignedRoom.Abbreviation + " ║ " + Room.Abbreviation + " " + Room.RoomPlan[1, 4].assignedRoom.Abbreviation + " ║ " + Room.Abbreviation + " " + Room.RoomPlan[2, 4].assignedRoom.Abbreviation + " ║ " + Room.Abbreviation + " " + Room.RoomPlan[3, 4].assignedRoom.Abbreviation + " ║ " + Room.Abbreviation + " " + Room.RoomPlan[4, 4].assignedRoom.Abbreviation + " ║");
+                    string subjectAbbr = entry?.assignedSubject?.Abbreviation ?? "  ";
+                    string classAbbr = entry?.assignedSchoolclass?.Abbreviation ?? "    ";
 
-            // 13:00 Pause
-            Console.WriteLine("╠════════╬════════════════╬════════════════╬════════════════╬════════════════╬════════════════╣");
-            Console.WriteLine("║ 13:00 ║ ║ ║ ║ ║ ║");
-            Console.WriteLine("║      ║ ║ ║ ║ ║ ║");
 
-            // 14:00
-            Console.WriteLine("╠════════╬════════════════╬════════════════╬════════════════╬════════════════╬════════════════╣");
-            Console.WriteLine("║ 14:00 ║ " + Room.RoomPlan[0, 5].assignedSubject.Abbreviation + " " + Room.RoomPlan[0, 5].assignedTeacher.Abbreviation + " ║ " + Room.RoomPlan[1, 5].assignedSubject.Abbreviation + " " + Room.RoomPlan[1, 5].assignedTeacher.Abbreviation + " ║ " + Room.RoomPlan[2, 5].assignedSubject.Abbreviation + " " + Room.RoomPlan[2, 5].assignedTeacher.Abbreviation + " ║ " + Room.RoomPlan[3, 5].assignedSubject.Abbreviation + " " + Room.RoomPlan[3, 5].assignedTeacher.Abbreviation + " ║ " + Room.RoomPlan[4, 5].assignedSubject.Abbreviation + " " + Room.RoomPlan[4, 5].assignedTeacher.Abbreviation + " ║");
-            Console.WriteLine("║      ║ " + Room.Abbreviation + " " + Room.RoomPlan[0, 5].assignedRoom.Abbreviation + " ║ " + Room.Abbreviation + " " + Room.RoomPlan[1, 5].assignedRoom.Abbreviation + " ║ " + Room.Abbreviation + " " + Room.RoomPlan[2, 5].assignedRoom.Abbreviation + " ║ " + Room.Abbreviation + " " + Room.RoomPlan[3, 5].assignedRoom.Abbreviation + " ║ " + Room.Abbreviation + " " + Room.RoomPlan[4, 5].assignedRoom.Abbreviation + " ║");
+                    string output = $" {subjectAbbr}        {classAbbr} ";
 
-            // 15:00
-            Console.WriteLine("╠════════╬════════════════╬════════════════╬════════════════╬════════════════╬════════════════╣");
-            Console.WriteLine("║ 15:00 ║ " + Room.RoomPlan[0, 6].assignedSubject.Abbreviation + " " + Room.RoomPlan[0, 6].assignedTeacher.Abbreviation + " ║ " + Room.RoomPlan[1, 6].assignedSubject.Abbreviation + " " + Room.RoomPlan[1, 6].assignedTeacher.Abbreviation + " ║ " + Room.RoomPlan[2, 6].assignedSubject.Abbreviation + " " + Room.RoomPlan[2, 6].assignedTeacher.Abbreviation + " ║ " + Room.RoomPlan[3, 6].assignedSubject.Abbreviation + " " + Room.RoomPlan[3, 6].assignedTeacher.Abbreviation + " ║ " + Room.RoomPlan[4, 6].assignedSubject.Abbreviation + " " + Room.RoomPlan[4, 6].assignedTeacher.Abbreviation + " ║");
-            Console.WriteLine("║      ║ " + Room.Abbreviation + " " + Room.RoomPlan[0, 6].assignedRoom.Abbreviation + " ║ " + Room.Abbreviation + " " + Room.RoomPlan[1, 6].assignedRoom.Abbreviation + " ║ " + Room.Abbreviation + " " + Room.RoomPlan[2, 6].assignedRoom.Abbreviation + " ║ " + Room.Abbreviation + " " + Room.RoomPlan[3, 6].assignedRoom.Abbreviation + " ║ " + Room.Abbreviation + " " + Room.RoomPlan[4, 6].assignedRoom.Abbreviation + " ║");
+                    Console.Write($"{output}║");
 
-            // 16:00
-            Console.WriteLine("╠════════╬════════════════╬════════════════╬════════════════╬════════════════╬════════════════╣");
-            Console.WriteLine("║ 16:00 ║ " + Room.RoomPlan[0, 7].assignedSubject.Abbreviation + " " + Room.RoomPlan[0, 7].assignedTeacher.Abbreviation + " ║ " + Room.RoomPlan[1, 7].assignedSubject.Abbreviation + " " + Room.RoomPlan[1, 7].assignedTeacher.Abbreviation + " ║ " + Room.RoomPlan[2, 7].assignedSubject.Abbreviation + " " + Room.RoomPlan[2, 7].assignedTeacher.Abbreviation + " ║ " + Room.RoomPlan[3, 7].assignedSubject.Abbreviation + " " + Room.RoomPlan[3, 7].assignedTeacher.Abbreviation + " ║ " + Room.RoomPlan[4, 7].assignedSubject.Abbreviation + " " + Room.RoomPlan[4, 7].assignedTeacher.Abbreviation + " ║");
-            Console.WriteLine("║      ║ " + Room.Abbreviation + " " + Room.RoomPlan[0, 7].assignedRoom.Abbreviation + " ║ " + Room.Abbreviation + " " + Room.RoomPlan[1, 7].assignedRoom.Abbreviation + " ║ " + Room.Abbreviation + " " + Room.RoomPlan[2, 7].assignedRoom.Abbreviation + " ║ " + Room.Abbreviation + " " + Room.RoomPlan[3, 7].assignedRoom.Abbreviation + " ║ " + Room.Abbreviation + " " + Room.RoomPlan[4, 7].assignedRoom.Abbreviation + " ║");
+                    if (tag == 4)
+                    {
+                        Console.WriteLine();
+                    }
+                }
 
-            // 17:00
-            Console.WriteLine("╠════════╬════════════════╬════════════════╬════════════════╬════════════════╬════════════════╣");
-            Console.WriteLine("║ 17:00 ║ " + Room.RoomPlan[0, 8].assignedSubject.Abbreviation + " " + Room.RoomPlan[0, 8].assignedTeacher.Abbreviation + " ║ " + Room.RoomPlan[1, 8].assignedSubject.Abbreviation + " " + Room.RoomPlan[1, 8].assignedTeacher.Abbreviation + " ║ " + Room.RoomPlan[2, 8].assignedSubject.Abbreviation + " " + Room.RoomPlan[2, 8].assignedTeacher.Abbreviation + " ║ " + Room.RoomPlan[3, 8].assignedSubject.Abbreviation + " " + Room.RoomPlan[3, 8].assignedTeacher.Abbreviation + " ║ " + Room.RoomPlan[4, 8].assignedSubject.Abbreviation + " " + Room.RoomPlan[4, 8].assignedTeacher.Abbreviation + " ║");
-            Console.WriteLine("║      ║ " + Room.Abbreviation + " " + Room.RoomPlan[0, 8].assignedRoom.Abbreviation + " ║ " + Room.Abbreviation + " " + Room.RoomPlan[1, 8].assignedRoom.Abbreviation + " ║ " + Room.Abbreviation + " " + Room.RoomPlan[2, 8].assignedRoom.Abbreviation + " ║ " + Room.Abbreviation + " " + Room.RoomPlan[3, 8].assignedRoom.Abbreviation + " ║ " + Room.Abbreviation + " " + Room.RoomPlan[4, 8].assignedRoom.Abbreviation + " ║");
+                Console.Write("║        ║");
+                for (int tag = 0; tag < 5; tag++)
+                {
+                    dynamic entry = room.RoomPlan[tag, planStunde];
 
-            // 18:00
-            Console.WriteLine("╠════════╬════════════════╬════════════════╬════════════════╬════════════════╬════════════════╣");
-            Console.WriteLine("║ 18:00 ║ " + Room.RoomPlan[0, 9].assignedSubject.Abbreviation + " " + Room.RoomPlan[0, 9].assignedTeacher.Abbreviation + " ║ " + Room.RoomPlan[1, 9].assignedSubject.Abbreviation + " " + Room.RoomPlan[1, 9].assignedTeacher.Abbreviation + " ║ " + Room.RoomPlan[2, 9].assignedSubject.Abbreviation + " " + Room.RoomPlan[2, 9].assignedTeacher.Abbreviation + " ║ " + Room.RoomPlan[3, 9].assignedSubject.Abbreviation + " " + Room.RoomPlan[3, 9].assignedTeacher.Abbreviation + " ║ " + Room.RoomPlan[4, 9].assignedSubject.Abbreviation + " " + Room.RoomPlan[4, 9].assignedTeacher.Abbreviation + " ║");
-            Console.WriteLine("║      ║ " + Room.Abbreviation + " " + Room.RoomPlan[0, 9].assignedRoom.Abbreviation + " ║ " + Room.Abbreviation + " " + Room.RoomPlan[1, 9].assignedRoom.Abbreviation + " ║ " + Room.Abbreviation + " " + Room.RoomPlan[2, 9].assignedRoom.Abbreviation + " ║ " + Room.Abbreviation + " " + Room.RoomPlan[3, 9].assignedRoom.Abbreviation + " ║ " + Room.Abbreviation + " " + Room.RoomPlan[4, 9].assignedRoom.Abbreviation + " ║");
+                    string teacherAbbr = entry?.assignedTeacher?.Abbreviation ?? "   ";
+                    string roomAbbr;
+                    if (entry != null)
+                        roomAbbr = room.Abbreviation;
+                    else roomAbbr = "    ";
+
+
+                        string output = $" {teacherAbbr}       {roomAbbr} ";
+
+                    Console.Write($"{output}║");
+
+                    if (tag == 4)
+                    {
+                        Console.WriteLine();
+                    }
+                }
+
+                if (stunde < 9 && stunde != 8)
+                {
+                    Console.WriteLine("╠════════╬════════════════╬════════════════╬════════════════╬════════════════╬════════════════╣");
+                }
+            }
 
             Console.WriteLine("╚════════╩════════════════╩════════════════╩════════════════╩════════════════╩════════════════╝");
-
-
-
-
-
-
         }
+    
+
 
 public static void Build()
 {
+    ClearAllPlans();
     Random rand = new Random();
-
+    Console.Write("start");
     foreach (Schoolclass classPlan in Schoolclass.AllClasses)
     {
         foreach (Subject subject in classPlan.Curriculum)
@@ -421,6 +263,7 @@ public static void Build()
 
                                 placed = true;
                             }
+                            attempts++;
                         }
 
                         if (!placed)
@@ -432,7 +275,8 @@ public static void Build()
             }
         }
     }
-    Optimizer.Optimise();
+            Console.Write("beendung erst erstellung");
+            Optimizer.Optimise();
 }
 public static void ClearAllPlans()
 {

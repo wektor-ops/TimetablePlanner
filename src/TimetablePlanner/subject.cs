@@ -21,7 +21,8 @@ namespace TimetablePlanner
         public Subject(string abbreviation)
         {
             Abbreviation = abbreviation;
-            AllSubjects.Add(this);
         }
+        public Subject()
+        { }
     }
 }

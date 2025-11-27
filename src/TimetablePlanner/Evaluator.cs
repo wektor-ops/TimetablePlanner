@@ -12,11 +12,13 @@ namespace TimetablePlanner
         public static int Evaluate(List<Schoolclass> currentPlan)
         {
             int score = 0;
+            Console.WriteLine("Evaluator gestartet");
 
             foreach (Schoolclass classPlan in currentPlan)
             {
                 score += ScoreClassPlan(classPlan);
             }
+            Console.WriteLine("Evaluator beendet");
             return score;
         }
 

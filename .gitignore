@@ -1,8 +1,6 @@
 ## Build-Artefakte
 # Binär-Ausgaben
-[Dd]ebug/
 [Rr]elease/
-[Bb]in/
 [Oo]bj/
 # Test-Ergebnisse
 *.trx

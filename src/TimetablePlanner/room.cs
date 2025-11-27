@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace TimetablePlanner
@@ -9,7 +10,8 @@ namespace TimetablePlanner
     public class Room
     {
         public static List<Room> AllRooms = new List<Room>();
-        public TimetableSlot[,] RoomPlan;
+        [JsonIgnore]
+        public TimetableSlot[,] RoomPlan { get; set; }
 
         private string _abbreviation;
         public string Abbreviation
@@ -29,7 +31,8 @@ namespace TimetablePlanner
 
             Abbreviation = abbreviation;
             RoomPlan = new TimetableSlot[Timetable.Days, Timetable.Hours];
-            AllRooms.Add(this);
         }
+        public Room()
+        { }
     }
 }

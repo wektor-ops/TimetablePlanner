@@ -14,7 +14,7 @@ namespace TimetablePlanner
             List<Schoolclass> currentPlan = DeepCloneClasses(Schoolclass.AllClasses);
             int currentScore = Evaluator.Evaluate(currentPlan);
             bool foundBetterGlobal = true;
-
+            Console.WriteLine("beginn optimierung");
             while (foundBetterGlobal)
             {
                 foundBetterGlobal = false;
@@ -41,6 +41,7 @@ namespace TimetablePlanner
                                     {
                                         List<Schoolclass> neighborPlan = DeepCloneClasses(currentPlan);
                                         SwapSlots(neighborPlan[c], d1, h1, d2, h2);
+                                        RecalculateResourcePlans(neighborPlan);
 
                                         int neighborScore = Evaluator.Evaluate(neighborPlan);
 
@@ -57,20 +58,33 @@ namespace TimetablePlanner
                 }
                 if (foundBetterGlobal)
                 {
+                    Console.WriteLine("einen besseren plan gefunden");
+                    RecalculateResourcePlans(bestNeighborPlan);
                     Schoolclass.AllClasses = bestNeighborPlan;
                     currentPlan = bestNeighborPlan;
                     currentScore = bestNeighborScore;
                 }
+                Console.WriteLine("ein durchgang beendet");
             }
         }
 
         private static void SwapSlots(Schoolclass classToModify, int d1, int h1, int d2, int h2)
         {
-
-                TimetableSlot temp = classToModify.ClassPlan[d1, h1];
+ 
+            TimetableSlot temp = classToModify.ClassPlan[d1, h1];
             classToModify.ClassPlan[d1, h1] = classToModify.ClassPlan[d2, h2];
             classToModify.ClassPlan[d2, h2] = temp;
-        
+
+            if (classToModify.ClassPlan[d1, h1] != null)
+            {
+                classToModify.ClassPlan[d1, h1].day = d1;
+                classToModify.ClassPlan[d1, h1].hour = h1;
+            }
+            if (classToModify.ClassPlan[d2, h2] != null)
+            {
+                classToModify.ClassPlan[d2, h2].day = d2;
+                classToModify.ClassPlan[d2, h2].hour = h2;
+            }
         }
         public static bool IsSwapValid(List<Schoolclass> currentPlan, int c, int d1, int h1, int d2, int h2)
         {
@@ -126,11 +140,43 @@ namespace TimetablePlanner
             }
             return false;
         }
+        public static void RecalculateResourcePlans(List<Schoolclass> plan)
+        {
+
+            foreach (var teacher in Teacher.AllTeachers)
+            {
+                teacher.TeacherPlan = new TimetableSlot[Timetable.Days, Timetable.Hours];
+            }
+
+            foreach (var room in Room.AllRooms)
+            {
+                room.RoomPlan = new TimetableSlot[Timetable.Days, Timetable.Hours];
+            }
+
+
+            foreach (Schoolclass schoolClass in plan)
+            {
+                for (int d = 0; d < Timetable.Days; d++)
+                {
+                    for (int h = 0; h < Timetable.Hours; h++)
+                    {
+                        TimetableSlot slot = schoolClass.ClassPlan[d, h];
+
+                        if (slot != null)
+                        {
+
+                            slot.assignedTeacher.TeacherPlan[d, h] = slot;
+                            slot.assignedRoom.RoomPlan[d, h] = slot;
+                        }
+                    }
+                }
+            }
+        }
 
         private static List<Schoolclass> DeepCloneClasses(List<Schoolclass> source)
         {
             List<Schoolclass> newList = new List<Schoolclass>();
-            foreach (var sc in source)
+            foreach (Schoolclass sc in source)
             {
                 newList.Add(sc.Clone());
             }
