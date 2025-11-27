@@ -621,7 +621,13 @@ namespace TimetablePlanner
                 Student foundStudent;
                 do
                 {
-                    Console.WriteLine("Please enter firstname of Student");
+                    foreach (Schoolclass c in Schoolclass.AllClasses)
+                    {
+                        foreach (Student s in c.Students)
+                            Console.Write(s.Firstname + " " + s.Lastname + "  ");
+                    }
+                        
+                    Console.WriteLine("\n\nPlease enter firstname of Student");
 
                     string firstnameofstudent = Console.ReadLine();
                     Console.WriteLine("Please enter Surname of Student");
@@ -664,7 +670,7 @@ namespace TimetablePlanner
                 {
                     foreach (Schoolclass c in Schoolclass.AllClasses)
                         Console.Write(c.Abbreviation + " ");
-                    Console.WriteLine("\nPlease enter Class abbrevation");
+                    Console.WriteLine("\n\nPlease enter Class abbrevation");
 
                     string Classabrv = Console.ReadLine();
 
@@ -703,8 +709,8 @@ namespace TimetablePlanner
             else if (AntwortCorB == "1")
             {
                 foreach (Teacher t in Teacher.AllTeachers)
-                    Console.Write(t.Abbreviation + " ");
-                Console.WriteLine("\nPlease enter firstname of Teacher");
+                    Console.Write(t.Firstname + " " + t.LastName + "  ");
+                Console.WriteLine("\n\nPlease enter firstname of Teacher");
 
                 string firstnameofteacher = Console.ReadLine();
                 Console.WriteLine("Please enter Surname of Teacher");
@@ -735,7 +741,7 @@ namespace TimetablePlanner
             {
                 foreach (Room r in Room.AllRooms)
                     Console.Write(r.Abbreviation + " ");
-                Console.WriteLine("\nPlease enter Abrrevation of Room(4 Characters)");
+                Console.WriteLine("\n\nPlease enter Abrrevation of Room(4 Characters)");
                 string SFRA = Console.ReadLine();
                 if (SFRA.Length == 4)
                 {
