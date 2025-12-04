@@ -28,7 +28,6 @@ namespace TimetablePlanner
                 if (!c.IsFull)
                 {
                     c.AddStudent(s);
-                    Datamanager.SaveData();
                     return;
                 }
             }

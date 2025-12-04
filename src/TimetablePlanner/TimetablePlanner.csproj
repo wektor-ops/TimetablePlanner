@@ -73,9 +73,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Datamanager.cs" />
+    <Compile Include="ExporterICS.cs" />
+    <Compile Include="IScheduleExporter.cs" />
+    <Compile Include="JsonDatamanager.cs" />
     <Compile Include="Evaluator.cs" />
     <Compile Include="Freely.cs" />
+    <Compile Include="IDataManager.cs" />
     <Compile Include="Optimizer.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

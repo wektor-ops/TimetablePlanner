@@ -12,8 +12,9 @@ namespace TimetablePlanner
     {
         static void Main(string[] args)
         {
+            JsonDatamanager datamanager = new JsonDatamanager();
             Program p = new Program();
-            Datamanager.LoadData();
+            datamanager.LoadData();
             int newValue;
 
             Console.Write($"Lücken (penalty_Gap, aktuell: {Timetable.penalty_Gap}). Neuer Wert: ");
@@ -40,7 +41,7 @@ namespace TimetablePlanner
                 Timetable.penalty_RoomsUse = newValue;
             }
             p.FirstQ();
-            Datamanager.SaveData();
+            datamanager.SaveData();
         }
         public void FirstQ()
         {
@@ -122,7 +123,8 @@ namespace TimetablePlanner
             string studentlastname = Console.ReadLine();
 
             new Student(studentfirstname, studentlastname);
-            Datamanager.SaveData();
+            JsonDatamanager datamanager = new JsonDatamanager();
+            datamanager.SaveData();
 
         }
 
@@ -403,7 +405,8 @@ namespace TimetablePlanner
                     Timetable.Build();
                 }
                 else Console.WriteLine("Not enough teachers/rooms available.");
-                Datamanager.SaveData();
+                JsonDatamanager datamanager = new JsonDatamanager();
+                datamanager.SaveData();
                 return;
             }
         }
@@ -463,7 +466,8 @@ namespace TimetablePlanner
                             if (Teacher.AllTeachers.Count >= Schoolclass.AllClasses.Count && Room.AllRooms.Count >= Schoolclass.AllClasses.Count)
                                 Timetable.Build();
                             else Console.WriteLine("Not enough teachers/rooms available.");
-                            Datamanager.SaveData();
+                            JsonDatamanager datamanager = new JsonDatamanager();
+                            datamanager.SaveData();
                         }
                         else
                         {
@@ -552,22 +556,12 @@ namespace TimetablePlanner
                     if (Teacher.AllTeachers.Count >= Schoolclass.AllClasses.Count && Room.AllRooms.Count >= Schoolclass.AllClasses.Count)
                         Timetable.Build();
                     else Console.WriteLine("Not enough teachers/rooms available.");
-                    Datamanager.SaveData();
-
-
-
+                    JsonDatamanager datamanager = new JsonDatamanager();
+                    datamanager.SaveData();
                     break;
-
-
                 case "0":
                     return;
-
-
             }
-
-
-
-
         }
 
 

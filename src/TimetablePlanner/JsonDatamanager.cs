@@ -10,10 +10,10 @@ using System.Threading.Tasks;
 
 namespace TimetablePlanner
 {
-    internal class Datamanager
+    internal class JsonDatamanager : IDataManager
     {
         private const string FILE_PATH = "timetable_data.json";
-        public static void LoadData() 
+        public void LoadData() 
         {
             if (!File.Exists(FILE_PATH))
                 return;
@@ -169,7 +169,7 @@ namespace TimetablePlanner
                 Console.WriteLine($"Error at load: {ex.Message}");
             }
         }
-        public static void SaveData() 
+        public void SaveData() 
         {
             PlanContainer planContainer = new PlanContainer();
 
