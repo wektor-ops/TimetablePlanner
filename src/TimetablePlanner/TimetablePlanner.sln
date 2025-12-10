@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.14.36414.22
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimetablePlanner", "TimetablePlanner.csproj", "{B3870348-F1CE-41C6-84B8-3A08FC47E31B}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "..\Tests\Tests.csproj", "{1B57FB01-7C36-4B24-8E3D-59738660BEF1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimetablePlanner", "TimetablePlanner.csproj", "{F460E436-6DCF-6994-1631-3936952E7864}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,14 +13,14 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{B3870348-F1CE-41C6-84B8-3A08FC47E31B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B3870348-F1CE-41C6-84B8-3A08FC47E31B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B3870348-F1CE-41C6-84B8-3A08FC47E31B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B3870348-F1CE-41C6-84B8-3A08FC47E31B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{1B57FB01-7C36-4B24-8E3D-59738660BEF1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{1B57FB01-7C36-4B24-8E3D-59738660BEF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1B57FB01-7C36-4B24-8E3D-59738660BEF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1B57FB01-7C36-4B24-8E3D-59738660BEF1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F460E436-6DCF-6994-1631-3936952E7864}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F460E436-6DCF-6994-1631-3936952E7864}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F460E436-6DCF-6994-1631-3936952E7864}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F460E436-6DCF-6994-1631-3936952E7864}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
