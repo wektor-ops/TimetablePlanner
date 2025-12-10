@@ -1,10 +1,15 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Security.Policy;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+//148 Funktion mache
+//194
+//226
+//293
 
 namespace TimetablePlanner
 {
@@ -48,7 +53,7 @@ namespace TimetablePlanner
             do
             {
                 Console.Clear();
-                Console.WriteLine(" [1] Student\n [2] Teacher\n [3] Schoolclass\n [4] Subject\n [5] Room\n [6] Timetable\n [0] End Program");
+                Console.WriteLine(" [1] Student\n [2] Teacher\n [3] Schoolclass\n [4] Subject\n [5] Room\n [6] Timetable\n [7] Export\n [0] End Program");
                 string Auswahl = Console.ReadLine();
 
                 switch (Auswahl)
@@ -74,6 +79,9 @@ namespace TimetablePlanner
                     case "6":
                         MTimetable();
                         break;
+                    case "7":
+                        MExport();
+                        break;
 
                     default: return;
                 }
@@ -81,7 +89,196 @@ namespace TimetablePlanner
             while (true);
         }
 
+        public void MExport() 
+        {
+            Console.Clear();
+            Console.WriteLine("Export Timetable of\n [1] Student\n [2] Teacher\n [3] Schoolclass\n [4] Room\n [0] Back");
+            string Auswahl = Console.ReadLine();
+            switch (Auswahl) 
+            {
+                case "1":
+                    MChooseStudent();
+                    break;
+                case "2":
+                    MChooseTeacher();
+                    break;
+                case "3":
+                    MChooseSchoolclass();
+                    break;
+                case "4":
+                    MChooseRoom();
+                    break;
+                case "0":
+                    return;
+                default: return;
 
+            }
+        }
+
+        public void MChooseStudent() 
+        {
+            Console.Clear();
+        
+
+           
+                Student foundStudent;
+                do
+                {
+                Console.WriteLine("All Students: ");
+                foreach (Schoolclass c in Schoolclass.AllClasses)
+                    {
+                   
+                    foreach (Student s in c.Students)
+                    
+                            Console.Write( s.Firstname + " " + s.Lastname + "  ");
+                    }
+
+                    Console.WriteLine("\n\nPlease enter firstname of Student");
+
+                    string firstnameofstudent = Console.ReadLine();
+                    Console.WriteLine("Please enter Surname of Student");
+                    string surnameofstudent = Console.ReadLine();
+                    Console.Clear();
+                    string AntwortStudentcorr;
+                    foreach (Schoolclass schoolClass in Schoolclass.AllClasses)
+                    {
+                        foundStudent = schoolClass.Students.Find(s => s.Firstname == firstnameofstudent && s.Lastname == surnameofstudent);
+                        if (foundStudent != null && schoolClass.ClassPlan != null)
+                        {
+                        Console.WriteLine("Timetable of: " + firstnameofstudent + " " + surnameofstudent);
+                            Timetable.OutputTimetable(schoolClass);
+                            Console.WriteLine("[1] Export Timetable");
+                            Console.WriteLine("[0] Back to Menu");
+                            AntwortStudentcorr = Console.ReadLine();
+                            if (AntwortStudentcorr == "0")
+                                return;
+                        if (AntwortStudentcorr == "1")
+                            return;//Export Funktion anstelle von return
+                            
+                        }
+
+
+
+
+                    }
+                    Console.WriteLine("[0] Back to Menu");
+                    AntwortStudentcorr = Console.ReadLine();
+                    if (AntwortStudentcorr == "0")
+                        return;
+                } while (true);
+        }
+
+
+        public void MChooseTeacher()
+        {
+
+             Console.Clear ();
+
+            Console.WriteLine("All Teachers: ");
+                foreach (Teacher t in Teacher.AllTeachers)
+                    Console.Write(t.Firstname + " " + t.LastName + "  ");
+                Console.WriteLine("\n\nPlease enter firstname of Teacher");
+
+                string firstnameofteacher = Console.ReadLine();
+                Console.WriteLine("Please enter Surname of Teacher");
+                string surnameofteacher = Console.ReadLine();
+
+                string AntwortTeachercorr;
+                if (Teacher.AllTeachers.Find(t => t.Firstname == firstnameofteacher && t.LastName == surnameofteacher) != null && Teacher.AllTeachers.Find(t => t.Firstname == firstnameofteacher && t.LastName == surnameofteacher).TeacherPlan != null)
+                {
+                    Console.Clear();
+                Console.WriteLine("Timetable of Teacher: ");
+                    Console.WriteLine( firstnameofteacher + " " + surnameofteacher );
+                    Timetable.OutputTimetable(Teacher.AllTeachers.Find(t => t.Firstname == firstnameofteacher && t.LastName == surnameofteacher));
+                    Console.WriteLine("[1] Export Timetable");
+                    Console.WriteLine("[0] Back to Menu");
+
+                    AntwortTeachercorr = Console.ReadLine();
+                    if (AntwortTeachercorr == "0")
+                        return;
+                    if(AntwortTeachercorr == "1")
+                    return;//Hier auch die Funktion
+                }
+                Console.WriteLine("[0] Back to Menu");
+                AntwortTeachercorr = Console.ReadLine();
+                if (AntwortTeachercorr == "0")
+                    return;
+            
+        }
+        public void MChooseSchoolclass()
+        {
+            Console.Clear();
+                foreach (Schoolclass c in Schoolclass.AllClasses)
+                        Console.Write(c.Abbreviation + " ");
+                    Console.WriteLine("\n\nPlease enter Class abbrevation");
+
+                    string Classabrv = Console.ReadLine();
+
+                    string AntworClasscorr;
+                    foreach (Schoolclass schoolClass in Schoolclass.AllClasses)
+                    {
+                        Schoolclass foundclass = Schoolclass.AllClasses.Find(c => c.Abbreviation == Classabrv);
+                        if (foundclass != null && foundclass.ClassPlan != null)
+                        {
+                            Console.Clear();
+                            Console.WriteLine("Timetable of Class: ");
+                            Console.WriteLine(Classabrv);
+                            Timetable.OutputTimetable(foundclass);
+                            Console.WriteLine("[1] Export Timetable");
+                            Console.WriteLine("[0] Back to Menu");
+                            AntworClasscorr = Console.ReadLine();
+                            if (AntworClasscorr == "0")
+                                return;
+                    if (AntworClasscorr == "1")
+                        return; // Hier auch die Funktion
+                        }
+
+
+
+                    }
+                    Console.WriteLine("[0] Back to Menu");
+                    AntworClasscorr = Console.ReadLine();
+                    if (AntworClasscorr == "0")
+                        return;
+                
+
+
+            
+        }
+        public void MChooseRoom()
+        {
+
+            Console.Clear();
+            Console.WriteLine("All rooms: ");
+            foreach (Room r in Room.AllRooms)              
+                    Console.Write( r.Abbreviation + " ");
+                Console.WriteLine("\n\nPlease enter Abrrevation of Room(4 Characters)");
+                string SFRA = Console.ReadLine();
+                if (SFRA.Length == 4)
+                {
+                    if (Room.AllRooms.Find(r => r.Abbreviation == SFRA) != null && Room.AllRooms.Find(r => r.Abbreviation == SFRA).RoomPlan != null)
+                    {
+                    Console.Clear();
+                    Console.WriteLine("Timetable of Room: ");
+                    Console.WriteLine( SFRA);
+                        Timetable.OutputTimetable(Room.AllRooms.Find(r => r.Abbreviation == SFRA));
+                        Console.WriteLine("[1] Export Timetable");
+                        Console.WriteLine("[0] Back to Menu");
+                        string AntwortRoomcorr = Console.ReadLine();
+                        if (AntwortRoomcorr == "0")
+                            return;
+                        if (AntwortRoomcorr == "1")
+                        return; // Hier auch die Funktion
+                    }
+
+
+                }
+
+
+
+            
+        }
+        
 
 
 
