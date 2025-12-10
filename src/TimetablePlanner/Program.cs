@@ -6,10 +6,7 @@ using System.Security.Policy;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-//148 Funktion mache
-//194
-//226
-//293
+
 
 namespace TimetablePlanner
 {
@@ -17,7 +14,7 @@ namespace TimetablePlanner
     {
         static void Main(string[] args)
         {
-            JsonDatamanager datamanager = new JsonDatamanager();
+            IDataManager datamanager = new JsonDatamanager();
             Program p = new Program();
             datamanager.LoadData();
             int newValue;
@@ -91,6 +88,7 @@ namespace TimetablePlanner
 
         public void MExport() 
         {
+
             Console.Clear();
             Console.WriteLine("Export Timetable of\n [1] Student\n [2] Teacher\n [3] Schoolclass\n [4] Room\n [0] Back");
             string Auswahl = Console.ReadLine();
@@ -145,7 +143,7 @@ namespace TimetablePlanner
                         foundStudent = schoolClass.Students.Find(s => s.Firstname == firstnameofstudent && s.Lastname == surnameofstudent);
                         if (foundStudent != null && schoolClass.ClassPlan != null)
                         {
-                        Console.WriteLine("Timetable of: " + firstnameofstudent + " " + surnameofstudent);
+                            Console.WriteLine("Timetable of: " + firstnameofstudent + " " + surnameofstudent);
                             Timetable.OutputTimetable(schoolClass);
                             Console.WriteLine("[1] Export Timetable");
                             Console.WriteLine("[0] Back to Menu");
@@ -153,14 +151,12 @@ namespace TimetablePlanner
                             if (AntwortStudentcorr == "0")
                                 return;
                         if (AntwortStudentcorr == "1")
-                            return;//Export Funktion anstelle von return
-                            
-                        }
-
-
-
-
+                            {
+                                IScheduleExporter exportmanager = new ExporterICS();
+                                exportmanager.ExportStudentPlan(schoolClass);
+                            }
                     }
+                }
                     Console.WriteLine("[0] Back to Menu");
                     AntwortStudentcorr = Console.ReadLine();
                     if (AntwortStudentcorr == "0")
@@ -197,7 +193,10 @@ namespace TimetablePlanner
                     if (AntwortTeachercorr == "0")
                         return;
                     if(AntwortTeachercorr == "1")
-                    return;//Hier auch die Funktion
+                    {
+                        IScheduleExporter exportmanager = new ExporterICS();
+                        exportmanager.ExportTeacherPlan(Teacher.AllTeachers.Find(t => t.Firstname == firstnameofteacher && t.LastName == surnameofteacher));
+                    }
                 }
                 Console.WriteLine("[0] Back to Menu");
                 AntwortTeachercorr = Console.ReadLine();
@@ -229,12 +228,12 @@ namespace TimetablePlanner
                             AntworClasscorr = Console.ReadLine();
                             if (AntworClasscorr == "0")
                                 return;
-                    if (AntworClasscorr == "1")
-                        return; // Hier auch die Funktion
+                        if (AntworClasscorr == "1")
+                        {
+                            IScheduleExporter exportmanager = new ExporterICS();
+                            exportmanager.ExportStudentPlan(foundclass);
                         }
-
-
-
+                }
                     }
                     Console.WriteLine("[0] Back to Menu");
                     AntworClasscorr = Console.ReadLine();
@@ -267,11 +266,12 @@ namespace TimetablePlanner
                         string AntwortRoomcorr = Console.ReadLine();
                         if (AntwortRoomcorr == "0")
                             return;
-                        if (AntwortRoomcorr == "1")
-                        return; // Hier auch die Funktion
+                    if (AntwortRoomcorr == "1")
+                    {
+                        IScheduleExporter exportmanager = new ExporterICS();
+                        exportmanager.ExportRoomPlan(Room.AllRooms.Find(r => r.Abbreviation == SFRA));
                     }
-
-
+                    }
                 }
 
 

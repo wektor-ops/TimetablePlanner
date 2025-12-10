@@ -43,9 +43,6 @@ namespace TimetablePlanner
                 Schoolclass newClass = new Schoolclass { Abbreviation = firstAbbr, ClassPlan = new TimetableSlot[Timetable.Days, Timetable.Hours] };
                 newClass.AddStudent(s);
                 AllClasses.Add(newClass);
-                if (Teacher.AllTeachers.Count >= AllClasses.Count && Room.AllRooms.Count >= AllClasses.Count)
-                    Timetable.Build();
-                else Console.WriteLine("Not enough teachers/rooms available.");
             }
         }
 
