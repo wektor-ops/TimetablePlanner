@@ -1,4 +1,4 @@
-﻿using TimetablePlanner;
+using TimetablePlanner;
 
 namespace Tests
 {
@@ -6,7 +6,7 @@ namespace Tests
     public sealed class TimetablePlanner_Tests
     {
         [TestMethod]
-        public void Constructor_RoomPlan_IsInitializedWithCorrectDimensions()
+        public void RoomPlan_IsInitializedWithCorrectDimensions()
         {
             // Arrange
             int expectedDays = Timetable.Days;
@@ -21,10 +21,10 @@ namespace Tests
             Assert.AreEqual(expectedHours, room.RoomPlan.GetLength(1), "second dimension hour ist wrong");
         }
         [TestMethod]
-        public void Constructor_LongAbbreviation_LengthIsExactlyFour()
+        public void LongAbbreviation_LengthIsExactlyFour()
         {
             // Arrange
-            string inputAbbreviation = "Roomtolong"; 
+            string inputAbbreviation = "Roomtolong";
             int expectedLength = 4;
 
             // Act
@@ -32,7 +32,51 @@ namespace Tests
 
 
             Assert.AreEqual(expectedLength, room.Abbreviation.Length,
-                "the abbrevation schould be four.");
+                "the abbrevation should be four.");
+        }
+        [TestMethod]
+        public void TeacherAbreviationisFourlong()
+        {
+            //Arrage
+            string inputfirstname = "Bob";
+            string inputlastname = "Berhard";
+            bool[,] inputAvailability = new bool[0,9];
+            int expected = 3;
+
+            //Act
+            Teacher teacher = new Teacher(inputfirstname,inputlastname, inputAvailability);
+
+            //Assert
+            Assert.AreEqual(expected, teacher.Abbreviation.Length, "The Abbreviation should be four");
+        }
+        [TestMethod]
+        public void AddStudenttoclass()
+        {
+            //Arrage
+            string inputfirstname = "Freddy";
+            string inputlastname = "Mercury";
+            Student student = new Student(inputfirstname,inputlastname);
+            Schoolclass expectedclass = Schoolclass.AllClasses.First();
+            int expected = expectedclass.Students.Count + 1;
+
+            //Act
+            expectedclass.Students.Add(student);
+            //Assert
+            Assert.AreEqual(expected, expectedclass.Students.Count, "There was no student added");
+        }
+        [TestMethod]
+        public void AbbreviationwithdateforSchoolclass()
+        {
+            //Arrage
+            int acctualyear = DateTime.Now.Year % 100;
+            string expectedabbreviation = "A" + acctualyear + "A";
+            Schoolclass schoolclass = new Schoolclass();
+
+            //Act
+            string ActualAbb = Schoolclass.GenerateNewAbbreviation();
+
+            //Assert
+            Assert.AreEqual(expectedabbreviation, ActualAbb, "Wrong Abbreviation");
         }
     }
 }
