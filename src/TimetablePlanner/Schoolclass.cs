@@ -82,7 +82,7 @@ namespace TimetablePlanner
                 Curriculum.Add(subject);
             }
         }
-        private static string GenerateNewAbbreviation()
+        public static string GenerateNewAbbreviation()
         {
             int currentYear = DateTime.Now.Year % 100; 
 
