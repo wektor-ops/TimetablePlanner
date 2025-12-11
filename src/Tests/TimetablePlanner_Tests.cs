@@ -26,7 +26,6 @@ namespace Tests
             // Arrange
             string inputAbbreviation = "Roomtolong"; 
             int expectedLength = 4;
-            string expectedAbbreviation = "Room"; 
 
             // Act
             Room room = new Room(inputAbbreviation);
