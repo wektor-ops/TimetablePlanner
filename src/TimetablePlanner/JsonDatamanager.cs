@@ -13,10 +13,12 @@ namespace TimetablePlanner
     internal class JsonDatamanager : IDataManager
     {
         private const string FILE_PATH = "timetable_data.json";
+
         public void LoadData() 
         {
             if (!File.Exists(FILE_PATH))
                 return;
+
 
             try
             {

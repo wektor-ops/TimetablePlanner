@@ -11,10 +11,10 @@ namespace TimetablePlanner
     {
         public static void Optimise()
         {
+            IScheduleEvaluator evaluator = new Evaluator();
             List<Schoolclass> currentPlan = DeepCloneClasses(Schoolclass.AllClasses);
-            int currentScore = Evaluator.Evaluate(currentPlan);
+            int currentScore = evaluator.Evaluate(currentPlan);
             bool foundBetterGlobal = true;
-            Console.WriteLine("beginn optimierung");
             while (foundBetterGlobal)
             {
                 foundBetterGlobal = false;
@@ -43,7 +43,7 @@ namespace TimetablePlanner
                                         SwapSlots(neighborPlan[c], d1, h1, d2, h2);
                                         RecalculateResourcePlans(neighborPlan);
 
-                                        int neighborScore = Evaluator.Evaluate(neighborPlan);
+                                        int neighborScore = evaluator.Evaluate(neighborPlan);
 
                                         if (neighborScore > bestNeighborScore)
                                         {
@@ -58,13 +58,11 @@ namespace TimetablePlanner
                 }
                 if (foundBetterGlobal)
                 {
-                    Console.WriteLine("einen besseren plan gefunden");
                     RecalculateResourcePlans(bestNeighborPlan);
                     Schoolclass.AllClasses = bestNeighborPlan;
                     currentPlan = bestNeighborPlan;
                     currentScore = bestNeighborScore;
                 }
-                Console.WriteLine("ein durchgang beendet");
             }
         }
 

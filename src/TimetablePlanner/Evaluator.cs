@@ -7,22 +7,20 @@ using System.Threading.Tasks;
 
 namespace TimetablePlanner
 {
-    public static class Evaluator
+    public class Evaluator : IScheduleEvaluator
     {
-        public static int Evaluate(List<Schoolclass> currentPlan)
+        public int Evaluate(List<Schoolclass> currentPlan)
         {
             int score = 0;
-            Console.WriteLine("Evaluator gestartet");
 
             foreach (Schoolclass classPlan in currentPlan)
             {
                 score += ScoreClassPlan(classPlan);
             }
-            Console.WriteLine("Evaluator beendet");
             return score;
         }
 
-        private static int ScoreClassPlan(Schoolclass plan)
+        private int ScoreClassPlan(Schoolclass plan)
         {
             int score = 0;
 
@@ -34,7 +32,7 @@ namespace TimetablePlanner
             return score;
         }
 
-        private static int ScoreGaps(Schoolclass plan)
+        private int ScoreGaps(Schoolclass plan)
         {
             int penalty = 0;
 
@@ -66,7 +64,7 @@ namespace TimetablePlanner
             return penalty;
         }
 
-        private static int ScoreRoomChanges(Schoolclass plan)
+        private int ScoreRoomChanges(Schoolclass plan)
         {
             int penalty = 0;
 
@@ -91,7 +89,7 @@ namespace TimetablePlanner
             return penalty;
         }
 
-        private static int ScoreEdgeHours(Schoolclass plan)
+        private int ScoreEdgeHours(Schoolclass plan)
         {
             int penalty = 0;
 
@@ -128,7 +126,7 @@ namespace TimetablePlanner
             }
             return penalty;
         }
-        private static int ScoreResourceEfficiency()
+        private int ScoreResourceEfficiency()
         {
             int score = 0;
 
