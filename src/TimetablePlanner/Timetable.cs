@@ -23,24 +23,29 @@ namespace TimetablePlanner
             Console.WriteLine("║  Zeit  ║      Mo        ║      Di        ║      Mi        ║      Do        ║      Fr        ║");
             Console.WriteLine("╠════════╬════════════════╬════════════════╬════════════════╬════════════════╬════════════════╣");
 
-            string[] times = { "08:00 ", "09:00 ", "10:00 ", "11:00 ", "12:00 ", "14:00 ", "15:00 ", "16:00 ", "17:00 ", "18:00 " };
+            string[] times = { "08:00 ", "09:00 ", "10:00 ", "11:00 ", "13:00 " , "14:00 ", "15:00 ", "16:00 " };
 
             for (int stunde = 0; stunde < 9; stunde++)
             {
-                if (stunde == 5)
+                if (stunde == 4)
                 {
-                    Console.WriteLine("║ 13:00  ║                ║                ║                ║                ║                ║");
+                    Console.WriteLine("║ 12:00  ║                ║                ║                ║                ║                ║");
                     Console.WriteLine("║        ║                ║                ║                ║                ║                ║");
                     Console.WriteLine("╠════════╬════════════════╬════════════════╬════════════════╬════════════════╬════════════════╣");
                     continue;
                 }
-
-                int planStunde = stunde < 5 ? stunde : stunde - 1;
-
+                bool changed = false;
+                if (stunde > 4)
+                {
+                    stunde--;
+                    changed = true;
+                }
+                    
                 Console.Write($"║ {times[stunde]} ║");
+
                 for (int tag = 0; tag < 5; tag++)
                 {
-                    TimetableSlot entry = schoolClass.ClassPlan[tag, planStunde];
+                    TimetableSlot entry = schoolClass.ClassPlan[tag, stunde];
 
                     string subjectAbbr = entry?.assignedSubject?.Abbreviation ?? "  ";
                     string teacherAbbr = entry?.assignedTeacher?.Abbreviation ?? "   ";
@@ -58,7 +63,7 @@ namespace TimetablePlanner
                 Console.Write("║        ║");
                 for (int tag = 0; tag < 5; tag++)
                 {
-                    TimetableSlot entry = schoolClass.ClassPlan[tag, planStunde];
+                    TimetableSlot entry = schoolClass.ClassPlan[tag, stunde];
                     string classAbbr;
                     if(entry != null)
                     classAbbr = schoolClass.Abbreviation;
@@ -75,13 +80,12 @@ namespace TimetablePlanner
                         Console.WriteLine();
                     }
                 }
-
-                if (stunde < 9 && stunde != 8)
-                {
                     Console.WriteLine("╠════════╬════════════════╬════════════════╬════════════════╬════════════════╬════════════════╣");
-                }
+                if (changed)
+                    stunde++;
             }
-
+            Console.WriteLine("║ 17:00  ║                ║                ║                ║                ║                ║");
+            Console.WriteLine("║        ║                ║                ║                ║                ║                ║");
             Console.WriteLine("╚════════╩════════════════╩════════════════╩════════════════╩════════════════╩════════════════╝");
         }
 
@@ -91,24 +95,27 @@ namespace TimetablePlanner
             Console.WriteLine("║  Zeit  ║      Mo        ║      Di        ║      Mi        ║      Do        ║      Fr        ║");
             Console.WriteLine("╠════════╬════════════════╬════════════════╬════════════════╬════════════════╬════════════════╣");
 
-            string[] times = { "08:00 ", "09:00 ", "10:00 ", "11:00 ", "12:00 ", "14:00 ", "15:00 ", "16:00 ", "17:00 ", "18:00 " };
+            string[] times = { "08:00 ", "09:00 ", "10:00 ", "11:00 ", "13:00 ", "14:00 ", "15:00 ", "16:00 " };
 
             for (int stunde = 0; stunde < 9; stunde++)
             {
-                if (stunde == 5)
+                if (stunde == 4)
                 {
-                    Console.WriteLine("║ 13:00  ║                ║                ║                ║                ║                ║");
+                    Console.WriteLine("║ 12:00  ║                ║                ║                ║                ║                ║");
                     Console.WriteLine("║        ║                ║                ║                ║                ║                ║");
                     Console.WriteLine("╠════════╬════════════════╬════════════════╬════════════════╬════════════════╬════════════════╣");
                     continue;
                 }
-
-                int planStunde = stunde < 5 ? stunde : stunde - 1;
-
+                bool changed = false;
+                if (stunde > 4)
+                {
+                    stunde--;
+                    changed = true;
+                }
                 Console.Write($"║ {times[stunde]} ║");
                 for (int tag = 0; tag < 5; tag++)
                 {
-                    TimetableSlot entry = teacher.TeacherPlan[tag, planStunde];
+                    TimetableSlot entry = teacher.TeacherPlan[tag, stunde];
 
                     string subjectAbbr = entry?.assignedSubject?.Abbreviation ?? "  ";
                     string classAbbr = entry?.assignedSchoolclass?.Abbreviation ?? "    ";
@@ -126,7 +133,7 @@ namespace TimetablePlanner
                 Console.Write("║        ║");
                 for (int tag = 0; tag < 5; tag++)
                 {
-                    TimetableSlot entry = teacher.TeacherPlan[tag, planStunde];
+                    TimetableSlot entry = teacher.TeacherPlan[tag, stunde];
                     string teacherAbbr;
                     if (entry != null)
                         teacherAbbr = teacher.Abbreviation;
@@ -143,12 +150,12 @@ namespace TimetablePlanner
                     }
                 }
 
-                if (stunde < 9 && stunde != 8)
-                {
-                    Console.WriteLine("╠════════╬════════════════╬════════════════╬════════════════╬════════════════╬════════════════╣");
-                }
+                Console.WriteLine("╠════════╬════════════════╬════════════════╬════════════════╬════════════════╬════════════════╣");
+                if (changed)
+                    stunde++;
             }
-
+            Console.WriteLine("║ 17:00  ║                ║                ║                ║                ║                ║");
+            Console.WriteLine("║        ║                ║                ║                ║                ║                ║");
             Console.WriteLine("╚════════╩════════════════╩════════════════╩════════════════╩════════════════╩════════════════╝");
         }
 
@@ -158,24 +165,28 @@ namespace TimetablePlanner
             Console.WriteLine("║  Zeit  ║      Mo        ║      Di        ║      Mi        ║      Do        ║      Fr        ║");
             Console.WriteLine("╠════════╬════════════════╬════════════════╬════════════════╬════════════════╬════════════════╣");
 
-            string[] times = { "08:00 ", "09:00 ", "10:00 ", "11:00 ", "12:00 ", "14:00 ", "15:00 ", "16:00 ", "17:00 ", "18:00 " };
+            string[] times = { "08:00 ", "09:00 ", "10:00 ", "11:00 ", "13:00 ", "14:00 ", "15:00 ", "16:00 " };
 
             for (int stunde = 0; stunde < 9; stunde++)
             {
-                if (stunde == 5)
+                if (stunde == 4)
                 {
-                    Console.WriteLine("║ 13:00  ║                ║                ║                ║                ║                ║");
+                    Console.WriteLine("║ 12:00  ║                ║                ║                ║                ║                ║");
                     Console.WriteLine("║        ║                ║                ║                ║                ║                ║");
                     Console.WriteLine("╠════════╬════════════════╬════════════════╬════════════════╬════════════════╬════════════════╣");
                     continue;
                 }
-
-                int planStunde = stunde < 5 ? stunde : stunde - 1;
+                bool changed = false;
+                if (stunde > 4)
+                {
+                    stunde--;
+                    changed = true;
+                }
 
                 Console.Write($"║ {times[stunde]} ║");
                 for (int tag = 0; tag < 5; tag++)
                 {
-                    TimetableSlot entry = room.RoomPlan[tag, planStunde];
+                    TimetableSlot entry = room.RoomPlan[tag, stunde];
 
                     string subjectAbbr = entry?.assignedSubject?.Abbreviation ?? "  ";
                     string classAbbr = entry?.assignedSchoolclass?.Abbreviation ?? "    ";
@@ -194,7 +205,7 @@ namespace TimetablePlanner
                 Console.Write("║        ║");
                 for (int tag = 0; tag < 5; tag++)
                 {
-                    dynamic entry = room.RoomPlan[tag, planStunde];
+                    dynamic entry = room.RoomPlan[tag, stunde];
 
                     string teacherAbbr = entry?.assignedTeacher?.Abbreviation ?? "   ";
                     string roomAbbr;
@@ -213,12 +224,12 @@ namespace TimetablePlanner
                     }
                 }
 
-                if (stunde < 9 && stunde != 8)
-                {
-                    Console.WriteLine("╠════════╬════════════════╬════════════════╬════════════════╬════════════════╬════════════════╣");
-                }
+                Console.WriteLine("╠════════╬════════════════╬════════════════╬════════════════╬════════════════╬════════════════╣");
+                if (changed)
+                    stunde++;
             }
-
+            Console.WriteLine("║ 17:00  ║                ║                ║                ║                ║                ║");
+            Console.WriteLine("║        ║                ║                ║                ║                ║                ║");
             Console.WriteLine("╚════════╩════════════════╩════════════════╩════════════════╩════════════════╩════════════════╝");
         }
     
@@ -228,7 +239,6 @@ public static void Build()
 {
     ClearAllPlans();
     Random rand = new Random();
-    Console.Write("start");
     foreach (Schoolclass classPlan in Schoolclass.AllClasses)
     {
         foreach (Subject subject in classPlan.Curriculum)

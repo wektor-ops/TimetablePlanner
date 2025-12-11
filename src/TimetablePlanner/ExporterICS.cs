@@ -74,22 +74,16 @@ namespace TimetablePlanner
                         startTime = new TimeSpan(11, 0, 0);
                         break;
                     case 4:
-                        startTime = new TimeSpan(12, 0, 0);
-                        break;
-                    case 5:
                         startTime = new TimeSpan(13, 0, 0);
                         break;
-                    case 6:
+                    case 5:
                         startTime = new TimeSpan(14, 0, 0);
                         break;
-                    case 7:
+                    case 6:
                         startTime = new TimeSpan(15, 0, 0);
                         break;
-                    case 8:
+                    case 7:
                         startTime = new TimeSpan(16, 0, 0);
-                        break;
-                    case 9:
-                        startTime = new TimeSpan(17, 0, 0);
                         break;
                     default:
                         startTime = TimeSpan.Zero;
@@ -197,22 +191,16 @@ namespace TimetablePlanner
                         startTime = new TimeSpan(11, 0, 0);
                         break;
                     case 4:
-                        startTime = new TimeSpan(12, 0, 0);
-                        break;
-                    case 5:
                         startTime = new TimeSpan(13, 0, 0);
                         break;
-                    case 6:
+                    case 5:
                         startTime = new TimeSpan(14, 0, 0);
                         break;
-                    case 7:
+                    case 6:
                         startTime = new TimeSpan(15, 0, 0);
                         break;
-                    case 8:
+                    case 7:
                         startTime = new TimeSpan(16, 0, 0);
-                        break;
-                    case 9:
-                        startTime = new TimeSpan(17, 0, 0);
                         break;
                     default:
                         startTime = TimeSpan.Zero;
@@ -319,22 +307,16 @@ namespace TimetablePlanner
                         startTime = new TimeSpan(11, 0, 0);
                         break;
                     case 4:
-                        startTime = new TimeSpan(12, 0, 0);
-                        break;
-                    case 5:
                         startTime = new TimeSpan(13, 0, 0);
                         break;
-                    case 6:
+                    case 5:
                         startTime = new TimeSpan(14, 0, 0);
                         break;
-                    case 7:
+                    case 6:
                         startTime = new TimeSpan(15, 0, 0);
                         break;
-                    case 8:
+                    case 7:
                         startTime = new TimeSpan(16, 0, 0);
-                        break;
-                    case 9:
-                        startTime = new TimeSpan(17, 0, 0);
                         break;
                     default:
                         startTime = TimeSpan.Zero;

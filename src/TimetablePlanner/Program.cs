@@ -422,16 +422,13 @@ namespace TimetablePlanner
                                     Availability[0, 1] = false;
                                     Availability[0, 2] = false;
                                     Availability[0, 3] = false;
-                                    Availability[0, 4] = false;
                                 }
                                 if (MOE == "E")
                                 {
+                                    Availability[0, 4] = false;
                                     Availability[0, 5] = false;
                                     Availability[0, 6] = false;
                                     Availability[0, 7] = false;
-                                    Availability[0, 8] = false;
-                                    Availability[0, 9] = false;
-                                    Availability[0, 10] = false;
                                 }
                                 if (MOE == "W")
                                 {
@@ -443,9 +440,6 @@ namespace TimetablePlanner
                                     Availability[0, 5] = false;
                                     Availability[0, 6] = false;
                                     Availability[0, 7] = false;
-                                    Availability[0, 8] = false;
-                                    Availability[0, 9] = false;
-                                    Availability[0, 10] = false;
                                 }
                                 break;
 
@@ -458,16 +452,13 @@ namespace TimetablePlanner
                                     Availability[1, 1] = false;
                                     Availability[1, 2] = false;
                                     Availability[1, 3] = false;
-                                    Availability[1, 4] = false;
                                 }
                                 if (MOET == "E")
                                 {
+                                    Availability[1, 4] = false;
                                     Availability[1, 5] = false;
                                     Availability[1, 6] = false;
                                     Availability[1, 7] = false;
-                                    Availability[1, 8] = false;
-                                    Availability[1, 9] = false;
-                                    Availability[1, 10] = false;
                                 }
                                 if (MOET == "W")
                                 {
@@ -479,9 +470,6 @@ namespace TimetablePlanner
                                     Availability[1, 5] = false;
                                     Availability[1, 6] = false;
                                     Availability[1, 7] = false;
-                                    Availability[1, 8] = false;
-                                    Availability[1, 9] = false;
-                                    Availability[1, 10] = false;
                                 }
                                 break;
                             case "We":
@@ -493,16 +481,13 @@ namespace TimetablePlanner
                                     Availability[2, 1] = false;
                                     Availability[2, 2] = false;
                                     Availability[2, 3] = false;
-                                    Availability[2, 4] = false;
                                 }
                                 if (MOEW == "E")
                                 {
+                                    Availability[2, 4] = false;
                                     Availability[2, 5] = false;
                                     Availability[2, 6] = false;
                                     Availability[2, 7] = false;
-                                    Availability[2, 8] = false;
-                                    Availability[2, 9] = false;
-                                    Availability[2, 10] = false;
                                 }
                                 if (MOEW == "W")
                                 {
@@ -514,9 +499,6 @@ namespace TimetablePlanner
                                     Availability[2, 5] = false;
                                     Availability[2, 6] = false;
                                     Availability[2, 7] = false;
-                                    Availability[2, 8] = false;
-                                    Availability[2, 9] = false;
-                                    Availability[2, 10] = false;
                                 }
                                 break;
                             case "Th":
@@ -528,16 +510,13 @@ namespace TimetablePlanner
                                     Availability[3, 1] = false;
                                     Availability[3, 2] = false;
                                     Availability[3, 3] = false;
-                                    Availability[3, 4] = false;
                                 }
                                 if (MOETH == "E")
                                 {
+                                    Availability[3, 4] = false;
                                     Availability[3, 5] = false;
                                     Availability[3, 6] = false;
                                     Availability[3, 7] = false;
-                                    Availability[3, 8] = false;
-                                    Availability[3, 9] = false;
-                                    Availability[3, 10] = false;
                                 }
                                 if (MOETH == "W")
                                 {
@@ -549,9 +528,6 @@ namespace TimetablePlanner
                                     Availability[3, 5] = false;
                                     Availability[3, 6] = false;
                                     Availability[3, 7] = false;
-                                    Availability[3, 8] = false;
-                                    Availability[3, 9] = false;
-                                    Availability[3, 10] = false;
                                 }
                                 break;
                             case "Fr":
@@ -563,16 +539,13 @@ namespace TimetablePlanner
                                     Availability[4, 1] = false;
                                     Availability[4, 2] = false;
                                     Availability[4, 3] = false;
-                                    Availability[4, 4] = false;
                                 }
                                 if (MOEF == "E")
                                 {
+                                    Availability[4, 4] = false;
                                     Availability[4, 5] = false;
                                     Availability[4, 6] = false;
                                     Availability[4, 7] = false;
-                                    Availability[4, 8] = false;
-                                    Availability[4, 9] = false;
-                                    Availability[4, 10] = false;
                                 }
                                 if (MOEF == "W")
                                 {
@@ -584,9 +557,6 @@ namespace TimetablePlanner
                                     Availability[4, 5] = false;
                                     Availability[4, 6] = false;
                                     Availability[4, 7] = false;
-                                    Availability[4, 8] = false;
-                                    Availability[4, 9] = false;
-                                    Availability[4, 10] = false;
                                 }
                                 break;
                         }
@@ -642,7 +612,8 @@ namespace TimetablePlanner
                 }
                 else
                 {
-
+                    foreach (Schoolclass sc in Schoolclass.AllClasses)
+                        Console.Write(sc.Abbreviation + " ");
                     Console.WriteLine("\n\nEnter Abrrivation of Class where you want to change Curriculum");
                     string ClassofCurriculum = Console.ReadLine();
                     if (Schoolclass.AllClasses.Find(sc => sc.Abbreviation == ClassofCurriculum) != null)
